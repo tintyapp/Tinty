@@ -379,6 +379,7 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 		bottomNavigationViewHolder.setColorButtonColor(toolController.getToolColor());
 		actionBar.initialize();
 		refreshActionBarButtons();
+		bottomNavigationViewHolder.setCurrentTool(toolController.getToolType());
 
 		if (model.isFullscreen()) {
 			enterFullscreen();
@@ -459,6 +460,7 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 
 	private void setTool(ToolType toolType) {
 		bottomBarViewHolder.hide();
+		bottomNavigationViewHolder.setCurrentTool(toolType);
 
 		int offset = actionBar.getHeight();
 		navigator.showToolChangeToast(offset, toolType.getNameResource());
