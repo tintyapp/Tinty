@@ -1,4 +1,4 @@
-/**
+/*
  * Paintroid: An image manipulation application for Android.
  * Copyright (C) 2010-2015 The Catrobat Team
  * (<http://developer.catrobat.org/credits>)
@@ -17,37 +17,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.catrobat.paintroid.test.espresso.rtl;
+package org.catrobat.paintroid.test.espresso;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.catrobat.paintroid.MainActivity;
-import org.catrobat.paintroid.test.espresso.rtl.util.RtlActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 
-import static org.catrobat.paintroid.test.espresso.util.wrappers.NavigationDrawerInteraction.onNavigationDrawer;
-import static org.hamcrest.Matchers.not;
+import static org.catrobat.paintroid.test.espresso.util.wrappers.TopBarViewInteraction.onTopBarView;
 
 @RunWith(AndroidJUnit4.class)
-public class NavigationDrawerRtlTest {
+public class ActionBarIntegrationTest {
 
 	@Rule
-	public ActivityTestRule<MainActivity> launchActivityRule = new RtlActivityTestRule<>(MainActivity.class, "ar");
+	public ActivityTestRule<MainActivity> launchActivityRule = new ActivityTestRule<>(MainActivity.class);
 
 	@Test
-	public void testNavigationDrawerCloseOnBack() {
-		onNavigationDrawer()
-				.performOpen()
-				.check(matches(isOpen()));
-		pressBack();
-		onNavigationDrawer()
-				.check(matches(not(isOpen())));
+	public void statusBarButtonsShouldAllBeVisible() {
+		onTopBarView().onUndoButton()
+				.check(matches(isDisplayed()));
+		onTopBarView().onRedoButton()
+				.check(matches(isDisplayed()));
 	}
 }

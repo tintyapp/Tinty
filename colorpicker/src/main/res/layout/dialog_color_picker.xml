@@ -22,21 +22,13 @@
     android:id="@+id/color_picker_base_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="?android:attr/colorBackground"
     android:clickable="true"
     android:focusable="true">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/color_picker_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="?attr/actionBarStyle"
-        android:background="?attr/colorPrimary" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/color_picker_toolbar"
         android:padding="16dp">
 
         <ScrollView

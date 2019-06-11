@@ -57,7 +57,7 @@ public final class ColorPickerViewInteraction extends CustomViewInteraction {
 	}
 
 	public ColorPickerViewInteraction performOpenColorPicker() {
-		onView(withId(R.id.pocketpaint_btn_top_color))
+		onView(withId(R.id.pocketpaint_action_color_picker))
 				.perform(click());
 		return this;
 	}

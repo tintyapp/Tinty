@@ -58,14 +58,6 @@ public class DefaultCommandFactory implements CommandFactory {
 	}
 
 	@Override
-	public Command createResetCommand() {
-		CompositeCommand command = new CompositeCommand();
-		command.addCommand(new ResetCommand());
-		command.addCommand(new AddLayerCommand(commonFactory));
-		return command;
-	}
-
-	@Override
 	public Command createAddLayerCommand() {
 		return new AddLayerCommand(commonFactory);
 	}

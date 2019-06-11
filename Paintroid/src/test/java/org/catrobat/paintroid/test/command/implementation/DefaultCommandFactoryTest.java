@@ -68,12 +68,6 @@ public class DefaultCommandFactoryTest {
 	}
 
 	@Test
-	public void testCreateResetCommand() {
-		Command command = commandFactory.createResetCommand();
-		assertThat(command, is(instanceOf(CompositeCommand.class)));
-	}
-
-	@Test
 	public void testCreateAddLayerCommand() {
 		Command command = commandFactory.createAddLayerCommand();
 		assertThat(command, is(instanceOf(AddLayerCommand.class)));

@@ -33,8 +33,8 @@ import static org.catrobat.paintroid.common.Constants.INVALID_RESOURCE_ID;
 public enum ToolType {
 	PIPETTE(R.string.button_pipette, R.string.help_content_eyedropper, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_pipette, INVALID_RESOURCE_ID, false),
 	BRUSH(R.string.button_brush, R.string.help_content_brush, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_brush, INVALID_RESOURCE_ID, true),
-	UNDO(R.string.button_undo, R.string.help_content_undo, EnumSet.of(StateChange.ALL), R.id.pocketpaint_btn_top_undo, INVALID_RESOURCE_ID, false),
-	REDO(R.string.button_redo, R.string.help_content_redo, EnumSet.of(StateChange.ALL), R.id.pocketpaint_btn_top_redo, INVALID_RESOURCE_ID, false),
+	UNDO(R.string.button_undo, R.string.help_content_undo, EnumSet.of(StateChange.ALL), 0, INVALID_RESOURCE_ID, false),
+	REDO(R.string.button_redo, R.string.help_content_redo, EnumSet.of(StateChange.ALL), 0, INVALID_RESOURCE_ID, false),
 	FILL(R.string.button_fill, R.string.help_content_fill, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_fill, INVALID_RESOURCE_ID, true),
 	STAMP(R.string.button_stamp, R.string.help_content_stamp, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_stamp, R.drawable.pocketpaint_stamp_tool_overlay, false),
 	LINE(R.string.button_line, R.string.help_content_line, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_line, INVALID_RESOURCE_ID, true),
@@ -44,8 +44,8 @@ public enum ToolType {
 	ERASER(R.string.button_eraser, R.string.help_content_eraser, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_eraser, INVALID_RESOURCE_ID, true),
 	SHAPE(R.string.button_shape, R.string.help_content_shape, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_rectangle, R.drawable.pocketpaint_rectangle_tool_overlay, true),
 	TEXT(R.string.button_text, R.string.help_content_text, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_text, R.drawable.pocketpaint_text_tool_overlay, true),
-	LAYER(R.string.layers_title, R.string.help_content_layer, EnumSet.of(StateChange.ALL), R.id.pocketpaint_btn_top_layers, INVALID_RESOURCE_ID, false),
-	COLORCHOOSER(R.string.color_picker_title, R.string.help_content_color_chooser, EnumSet.of(StateChange.ALL), R.id.pocketpaint_btn_top_color, INVALID_RESOURCE_ID, false),
+	LAYER(R.string.layers_title, R.string.help_content_layer, EnumSet.of(StateChange.ALL), 0, INVALID_RESOURCE_ID, false),
+	COLORCHOOSER(R.string.color_picker_title, R.string.help_content_color_chooser, EnumSet.of(StateChange.ALL), 0, INVALID_RESOURCE_ID, false),
 	HAND(R.string.button_hand, R.string.help_content_hand, EnumSet.of(StateChange.ALL), R.id.pocketpaint_tools_hand, INVALID_RESOURCE_ID, false);
 
 	private int nameResource;

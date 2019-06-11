@@ -60,8 +60,8 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialogFragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -80,6 +80,8 @@ public final class ColorPickerDialog extends AppCompatDialogFragment implements 
 	private Button buttonCancel;
 	private int colorToApply;
 	private Shader checkeredShader;
+
+	private boolean showActionBar;
 
 	public static ColorPickerDialog newInstance(@ColorInt int initialColor) {
 		return newInstance(initialColor, false);
@@ -108,6 +110,7 @@ public final class ColorPickerDialog extends AppCompatDialogFragment implements 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 
 		Bitmap checkeredBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pocketpaint_checkeredbg);
 		checkeredShader = new BitmapShader(checkeredBitmap, TileMode.REPEAT, TileMode.REPEAT);
@@ -143,33 +146,34 @@ public final class ColorPickerDialog extends AppCompatDialogFragment implements 
 			});
 
 		colorPickerView.setOnColorChangedListener(this);
+		Bundle arguments = getArguments();
+		showActionBar = arguments.getBoolean(SHOW_ACTION_BAR);
 
 		if (savedInstanceState != null) {
 			setCurrentColor(savedInstanceState.getInt(CURRENT_COLOR, Color.BLACK));
 			setInitialColor(savedInstanceState.getInt(INITIAL_COLOR, Color.BLACK));
 		} else {
-			Bundle arguments = getArguments();
 			setCurrentColor(arguments.getInt(CURRENT_COLOR, Color.BLACK));
 			setInitialColor(arguments.getInt(INITIAL_COLOR, Color.BLACK));
 		}
 
 		colorToApply = colorPickerView.getInitialColor();
+	}
 
-		boolean showActionBar = getArguments().getBoolean(SHOW_ACTION_BAR);
-		Toolbar toolbar = view.findViewById(R.id.color_picker_toolbar);
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
 
-		if (getShowsDialog() || !showActionBar) {
-			toolbar.setVisibility(View.GONE);
-		} else {
+		if (!getShowsDialog() && showActionBar) {
 			AppCompatActivity activity = (AppCompatActivity) getActivity();
-			activity.setSupportActionBar(toolbar);
-
 			ActionBar supportActionBar = activity.getSupportActionBar();
 			if (supportActionBar != null) {
-				supportActionBar.setDisplayHomeAsUpEnabled(true);
-				supportActionBar.setDisplayShowHomeEnabled(true);
 				supportActionBar.setTitle(R.string.color_picker_title);
+				supportActionBar.setDisplayShowTitleEnabled(true);
+				supportActionBar.setDisplayHomeAsUpEnabled(true);
 			}
+
+			menu.clear();
 		}
 	}
 
