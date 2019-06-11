@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -20,23 +19,22 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_tools"
-        android:title="@string/bottom_navigation_tools"
-        android:icon="@drawable/ic_pocketpaint_tool_hand" />
-
-
-    <item
-        android:id="@+id/action_current_tool"
-        android:title="@string/bottom_navigation_current"
-        android:icon="@drawable/ic_pocketpaint_tool_hand" />
+        android:id="@+id/pocketpaint_action_tools"
+        android:icon="@drawable/ic_pocketpaint_tool_hand"
+        android:title="@string/bottom_navigation_tools" />
 
     <item
-        android:id="@+id/action_color_picker"
-        android:title="@string/bottom_navigation_color"
-        android:icon="@drawable/ic_pocketpaint_tool_hand" />
+        android:id="@+id/pocketpaint_action_current_tool"
+        android:icon="@drawable/ic_pocketpaint_tool_hand"
+        android:title="@string/bottom_navigation_current" />
 
     <item
-        android:id="@+id/action_layers"
-        android:title="@string/bottom_navigation_layers"
-        android:icon="@drawable/ic_pocketpaint_layers" />
+        android:id="@+id/pocketpaint_action_color_picker"
+        android:icon="@drawable/ic_pocketpaint_tool_hand"
+        android:title="@string/bottom_navigation_color" />
+
+    <item
+        android:id="@+id/pocketpaint_action_layers"
+        android:icon="@drawable/ic_pocketpaint_layers"
+        android:title="@string/bottom_navigation_layers" />
 </menu>

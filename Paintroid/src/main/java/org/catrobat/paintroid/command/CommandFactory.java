@@ -36,8 +36,6 @@ public interface CommandFactory {
 
 	Command createInitCommand(Bitmap bitmap);
 
-	Command createResetCommand();
-
 	Command createAddLayerCommand();
 
 	Command createSelectLayerCommand(int position);

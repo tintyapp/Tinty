@@ -71,7 +71,7 @@ public final class LayerMenuViewInteraction extends CustomViewInteraction {
 	}
 
 	public LayerMenuViewInteraction performOpen() {
-		onView(withId(R.id.pocketpaint_btn_top_layers))
+		onView(withId(R.id.pocketpaint_action_layers))
 				.perform(click());
 		check(matches(isDisplayed()));
 		return this;

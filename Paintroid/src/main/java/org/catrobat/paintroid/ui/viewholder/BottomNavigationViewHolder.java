@@ -53,6 +53,11 @@ public class BottomNavigationViewHolder implements MainActivityContracts.BottomN
 		layout.setVisibility(View.GONE);
 	}
 
+	@Override
+	public void setColorButtonColor(int toolColor) {
+		//Needs to be implemented
+	}
+
 	public BottomNavigationView getBottomNavigationView() {
 		return bottomNavigationView;
 	}

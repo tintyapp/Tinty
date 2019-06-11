@@ -23,11 +23,12 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import org.catrobat.paintroid.common.MainActivityConstants.ActivityRequestCode;
 import org.catrobat.paintroid.dialog.PermissionInfoDialog;
@@ -89,8 +90,6 @@ public interface MainActivityContracts {
 
 		DisplayMetrics getDisplayMetrics();
 
-		void initializeActionBar();
-
 		void superHandleActivityResult(int requestCode, int resultCode, Intent data);
 
 		void superHandleRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults);
@@ -122,8 +121,6 @@ public interface MainActivityContracts {
 
 		void newImageClicked();
 
-		void discardImageClicked();
-
 		void saveCopyClicked();
 
 		void saveImageClicked();
@@ -131,8 +128,6 @@ public interface MainActivityContracts {
 		void enterFullscreenClicked();
 
 		void exitFullscreenClicked();
-
-		void backToPocketCodeClicked();
 
 		void showAboutClicked();
 
@@ -158,7 +153,7 @@ public interface MainActivityContracts {
 
 		void onCommandPostExecute();
 
-		void setTopBarColor(int color);
+		void setColorButtonColor(int color);
 
 		void onCreateTool();
 
@@ -207,22 +202,22 @@ public interface MainActivityContracts {
 		void loadFile(LoadImageAsync.LoadImageCallback callback, int requestCode, int maxWidth, int maxHeight, Uri uri);
 	}
 
-	interface TopBarViewHolder {
-		void enableUndoButton();
+	interface ActionBarViewHolder {
+		void setUndoButtonEnabled(boolean enabled);
 
-		void disableUndoButton();
+		void setRedoButtonEnabled(boolean enabled);
 
-		void enableRedoButton();
-
-		void disableRedoButton();
-
-		void setColorButtonColor(@ColorInt int color);
+		void initialize();
 
 		void hide();
 
 		void show();
 
 		int getHeight();
+
+		void invalidateOptionsMenu();
+
+		boolean onCreateOptionsMenu(Menu menu, MenuInflater menuInflater);
 	}
 
 	interface DrawerLayoutViewHolder {
@@ -232,19 +227,6 @@ public interface MainActivityContracts {
 		boolean isDrawerOpen(int gravity);
 
 		void openDrawer(int gravity);
-	}
-
-	interface NavigationDrawerViewHolder {
-
-		void setVersion(String versionString);
-
-		void showExitFullscreen();
-
-		void hideExitFullscreen();
-
-		void showEnterFullscreen();
-
-		void hideEnterFullscreen();
 	}
 
 	interface BottomBarViewHolder {
@@ -259,5 +241,7 @@ public interface MainActivityContracts {
 		void show();
 
 		void hide();
+
+		void setColorButtonColor(int toolColor);
 	}
 }
