@@ -382,11 +382,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	}
 
 	@Override
-	public void setTopBarColor(int color) {
-		topBarViewHolder.setColorButtonColor(color);
-	}
-
-	@Override
 	public void initializeFromCleanState(String extraPicturePath, String extraPictureName) {
 		boolean isOpenedFromCatroid = extraPicturePath != null;
 		model.setOpenedFromCatroid(isOpenedFromCatroid);
@@ -407,7 +402,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	@Override
 	public void finishInitialize() {
 		refreshTopBarButtons();
-		topBarViewHolder.setColorButtonColor(toolController.getToolColor());
 		bottomBarViewHolder.selectToolButton(toolController.getToolType());
 
 		if (model.isFullscreen()) {

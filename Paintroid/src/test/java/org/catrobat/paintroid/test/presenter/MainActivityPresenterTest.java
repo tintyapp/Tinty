@@ -25,7 +25,6 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.view.GravityCompat;
 import android.util.DisplayMetrics;
@@ -574,13 +573,6 @@ public class MainActivityPresenterTest {
 	}
 
 	@Test
-	public void testSetTopBarColorThenSetColorButtonColor() {
-		presenter.setTopBarColor(Color.GREEN);
-
-		verify(topBarViewHolder).setColorButtonColor(Color.GREEN);
-	}
-
-	@Test
 	public void testInitializeFromCleanStateWhenDefaultThenUnsetSavedPictureUri() {
 		presenter.initializeFromCleanState(null, null);
 
@@ -710,16 +702,6 @@ public class MainActivityPresenterTest {
 		presenter.finishInitialize();
 
 		verify(view).enterFullscreen();
-	}
-
-	@Test
-	public void testFinishInitializeThenRestoreColorButtonColor() {
-		when(model.isFullscreen()).thenReturn(true);
-		when(toolController.getToolColor()).thenReturn(Color.RED);
-
-		presenter.finishInitialize();
-
-		verify(topBarViewHolder).setColorButtonColor(Color.RED);
 	}
 
 	@Test

@@ -57,7 +57,7 @@ public class DefaultToolFactory implements ToolFactory {
 			case IMPORTPNG:
 				return new ImportTool(contextCallback, toolOptionsViewController, toolPaint, workspace, commandManager);
 			case PIPETTE:
-				return new PipetteTool(contextCallback, toolOptionsViewController, toolPaint, workspace, commandManager, onColorPickedListener);
+				return new PipetteTool(contextCallback, toolOptionsViewController, toolPaint, workspace, commandManager);
 			case FILL:
 				return new FillTool(createFillToolOptionsView(toolLayout), contextCallback, toolOptionsViewController, toolPaint, workspace, commandManager);
 			case TRANSFORM:

@@ -27,21 +27,18 @@ import android.widget.ImageButton;
 
 import org.catrobat.paintroid.R;
 import org.catrobat.paintroid.contract.MainActivityContracts;
-import org.catrobat.paintroid.ui.button.ColorButton;
 
 public class TopBarViewHolder implements MainActivityContracts.TopBarViewHolder {
 	public final ImageButton undoButton;
 	public final ImageButton redoButton;
-	public final ColorButton colorButton;
 	public final ImageButton layerButton;
 	public final ViewGroup layout;
-	public final Menu moreOptions;
+	private final Menu moreOptions;
 
 	public TopBarViewHolder(ViewGroup layout) {
 		this.layout = layout;
 		undoButton = layout.findViewById(R.id.pocketpaint_btn_top_undo);
 		redoButton = layout.findViewById(R.id.pocketpaint_btn_top_redo);
-		colorButton = layout.findViewById(R.id.pocketpaint_btn_top_color);
 		layerButton = layout.findViewById(R.id.pocketpaint_btn_top_layers);
 		moreOptions = ((Toolbar) layout.findViewById(R.id.pocketpaint_toolbar)).getMenu();
 	}
@@ -64,11 +61,6 @@ public class TopBarViewHolder implements MainActivityContracts.TopBarViewHolder 
 	@Override
 	public void disableRedoButton() {
 		redoButton.setEnabled(false);
-	}
-
-	@Override
-	public void setColorButtonColor(int color) {
-		colorButton.colorChanged(color);
 	}
 
 	@Override

@@ -56,7 +56,6 @@ import org.catrobat.paintroid.contract.MainActivityContracts;
 import org.catrobat.paintroid.controller.DefaultToolController;
 import org.catrobat.paintroid.controller.ToolController;
 import org.catrobat.paintroid.listener.BottomBarScrollListener;
-import org.catrobat.paintroid.listener.PresenterColorPickedListener;
 import org.catrobat.paintroid.model.LayerModel;
 import org.catrobat.paintroid.model.MainActivityModel;
 import org.catrobat.paintroid.presenter.LayerPresenter;
@@ -301,7 +300,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 		presenter = new MainActivityPresenter(this, model, workspace,
 				navigator, interactor, topBarViewHolder, bottomBarViewHolder, drawerLayoutViewHolder,
 				bottomNavigationViewHolder, new DefaultCommandFactory(), commandManager, perspective, toolController);
-		toolController.setOnColorPickedListener(new PresenterColorPickedListener(presenter));
 
 		keyboardListener = new KeyboardListener(drawerLayout);
 		setTopBarListeners(topBarViewHolder);
@@ -353,7 +351,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	private void setActionBarToolTips(TopBarViewHolder topBar, Context context) {
 		TooltipCompat.setTooltipText(topBar.undoButton, context.getString(R.string.button_undo));
 		TooltipCompat.setTooltipText(topBar.redoButton, context.getString(R.string.button_redo));
-		TooltipCompat.setTooltipText(topBar.colorButton, context.getString(R.string.bottom_navigation_color));
 		TooltipCompat.setTooltipText(topBar.layerButton, context.getString(R.string.button_layers));
 	}
 
@@ -368,12 +365,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 			@Override
 			public void onClick(View v) {
 				presenter.redoClicked();
-			}
-		});
-		topBar.colorButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				presenter.showColorPickerClicked();
 			}
 		});
 		topBar.layerButton.setOnClickListener(new View.OnClickListener() {

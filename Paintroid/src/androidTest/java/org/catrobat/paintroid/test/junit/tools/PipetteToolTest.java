@@ -23,7 +23,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PointF;
 
-import org.catrobat.paintroid.colorpicker.ColorPickerDialog.OnColorPickedListener;
 import org.catrobat.paintroid.command.CommandManager;
 import org.catrobat.paintroid.tools.ContextCallback;
 import org.catrobat.paintroid.tools.ToolPaint;
@@ -58,8 +57,6 @@ public class PipetteToolTest {
 	@Mock
 	private CommandManager commandManager;
 	@Mock
-	private OnColorPickedListener listener;
-	@Mock
 	private ToolPaint toolPaint;
 	@Mock
 	private Workspace workspace;
@@ -87,7 +84,7 @@ public class PipetteToolTest {
 			}
 		});
 
-		toolToTest = new PipetteTool(contextCallback, toolOptionsViewController, toolPaint, workspace, commandManager, listener);
+		toolToTest = new PipetteTool(contextCallback, toolOptionsViewController, toolPaint, workspace, commandManager);
 	}
 
 	@Test
@@ -98,10 +95,6 @@ public class PipetteToolTest {
 		InOrder inOrderToolPaint = inOrder(toolPaint);
 		inOrderToolPaint.verify(toolPaint).setColor(Color.RED);
 		inOrderToolPaint.verify(toolPaint).setColor(0xAAAAAAAA);
-
-		InOrder inOrderListener = inOrder(listener);
-		inOrderListener.verify(listener).colorChanged(Color.RED);
-		inOrderListener.verify(listener).colorChanged(0xAAAAAAAA);
 	}
 
 	@Test
@@ -116,12 +109,6 @@ public class PipetteToolTest {
 		inOrderToolPaint.verify(toolPaint).setColor(Color.TRANSPARENT);
 		inOrderToolPaint.verify(toolPaint).setColor(Color.GREEN);
 		inOrderToolPaint.verify(toolPaint).setColor(0xAAAAAAAA);
-
-		InOrder inOrderListener = inOrder(listener);
-		inOrderListener.verify(listener).colorChanged(Color.RED);
-		inOrderListener.verify(listener).colorChanged(Color.TRANSPARENT);
-		inOrderListener.verify(listener).colorChanged(Color.GREEN);
-		inOrderListener.verify(listener).colorChanged(0xAAAAAAAA);
 	}
 
 	@Test
@@ -132,10 +119,6 @@ public class PipetteToolTest {
 		InOrder inOrderToolPaint = Mockito.inOrder(toolPaint);
 		inOrderToolPaint.verify(toolPaint).setColor(Color.BLUE);
 		inOrderToolPaint.verify(toolPaint).setColor(0xAAAAAAAA);
-
-		InOrder inOrderListener = Mockito.inOrder(listener);
-		inOrderListener.verify(listener).colorChanged(Color.BLUE);
-		inOrderListener.verify(listener).colorChanged(0xAAAAAAAA);
 	}
 
 	@Test
