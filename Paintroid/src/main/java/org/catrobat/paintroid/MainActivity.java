@@ -394,7 +394,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 		boolean showHome = model.isOpenedFromCatroid();
 		ActionBar supportActionBar = getSupportActionBar();
 		if (supportActionBar != null) {
-			supportActionBar.setDisplayShowTitleEnabled(false);
+			supportActionBar.setDisplayShowTitleEnabled(!isOpenedFromCatroid);
+			supportActionBar.setTitle(R.string.pocketpaint_app_name);
 			supportActionBar.setDisplayHomeAsUpEnabled(true);
 			supportActionBar.setHomeButtonEnabled(true);
 			supportActionBar.setDisplayShowHomeEnabled(showHome);
