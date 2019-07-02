@@ -430,7 +430,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 			topBarViewHolder.removeItem(R.id.pocketpaint_nav_save_duplicate);
 			topBarViewHolder.removeItem(R.id.pocketpaint_nav_new_image);
 		} else {
-			topBarViewHolder.removeItem(R.id.pocketpaint_nav_back_to_pocket_code);
 			topBarViewHolder.removeItem(R.id.pocketpaint_nav_export);
 			topBarViewHolder.removeItem(R.id.pocketpaint_nav_discard_image);
 		}

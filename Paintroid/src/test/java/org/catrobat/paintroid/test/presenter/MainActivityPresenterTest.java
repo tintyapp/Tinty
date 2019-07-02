@@ -752,7 +752,6 @@ public class MainActivityPresenterTest {
 		presenter.removeMoreOptionsItems();
 
 		verify(topBarViewHolder).removeItem(R.id.pocketpaint_nav_export);
-		verify(topBarViewHolder).removeItem(R.id.pocketpaint_nav_back_to_pocket_code);
 	}
 
 	@Test
