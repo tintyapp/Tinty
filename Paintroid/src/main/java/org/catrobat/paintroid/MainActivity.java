@@ -242,8 +242,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 			bottomNavigationViewHolder.setLandscapeStyle(getApplicationContext());
 		}
 
-		float density = getResources().getDisplayMetrics().density;
-		perspective = new Perspective(density, layerModel.getWidth(), layerModel.getHeight());
+		perspective = new Perspective(layerModel.getWidth(), layerModel.getHeight());
 		workspace = new DefaultWorkspace(layerModel, perspective, new DefaultWorkspace.Listener() {
 			@Override
 			public void invalidate() {
@@ -410,6 +409,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	}
 
 	@Override
+	public boolean onSupportNavigateUp() {
+		onBackPressed();
+		return true;
+	}
+
+	@Override
 	public void commandPreExecute() {
 		presenter.onCommandPreExecute();
 	}
@@ -470,7 +475,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
 	@Override
 	public void onBackPressed() {
-		presenter.onBackPressed();
+		FragmentManager supportFragmentManager = getSupportFragmentManager();
+		if (supportFragmentManager.isStateSaved()) {
+			super.onBackPressed();
+		} else if (!supportFragmentManager.popBackStackImmediate()) {
+			presenter.onBackPressed();
+		}
 	}
 
 	@Override
