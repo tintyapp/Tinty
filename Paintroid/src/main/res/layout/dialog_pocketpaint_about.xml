@@ -38,7 +38,6 @@
             android:padding="10dp" >
 
             <ImageView
-                android:id="@+id/pocketpaint_about_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/pocketpaint_logo_small"

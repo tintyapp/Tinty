@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.ColorInt;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -32,7 +31,6 @@ import android.util.DisplayMetrics;
 
 import org.catrobat.paintroid.common.MainActivityConstants.ActivityRequestCode;
 import org.catrobat.paintroid.dialog.PermissionInfoDialog;
-import org.catrobat.paintroid.iotasks.CreateFileAsync;
 import org.catrobat.paintroid.iotasks.LoadImageAsync;
 import org.catrobat.paintroid.iotasks.SaveImageAsync;
 import org.catrobat.paintroid.tools.ToolType;
@@ -49,13 +47,9 @@ public interface MainActivityContracts {
 
 		void showAboutDialog();
 
-		void startWelcomeActivity(@ActivityRequestCode int requestCode);
-
 		void showIndeterminateProgressDialog();
 
 		void dismissIndeterminateProgressDialog();
-
-		void returnToPocketCode(String path);
 
 		void showToast(@StringRes int resId, int duration);
 
@@ -72,8 +66,6 @@ public interface MainActivityContracts {
 		boolean doIHavePermission(String permission);
 
 		void finishActivity();
-
-		void showSaveBeforeReturnToCatroidDialog();
 
 		void showSaveBeforeFinishDialog();
 
@@ -97,7 +89,7 @@ public interface MainActivityContracts {
 
 		DisplayMetrics getDisplayMetrics();
 
-		void initializeActionBar(boolean isOpenedFromCatroid);
+		void initializeActionBar();
 
 		void superHandleActivityResult(int requestCode, int resultCode, Intent data);
 
@@ -117,10 +109,10 @@ public interface MainActivityContracts {
 	}
 
 	interface Presenter {
-		void initializeFromCleanState(String extraPicturePath, String extraPictureName);
+		void initializeFromCleanState();
 
-		void restoreState(boolean isFullscreen, boolean isSaved, boolean isOpenedFromCatroid,
-				boolean wasInitialAnimationPlayed, @Nullable Uri savedPictureUri, @Nullable Uri cameraImageUri);
+		void restoreState(boolean isFullscreen, boolean isSaved,
+						boolean wasInitialAnimationPlayed, @Nullable Uri savedPictureUri, @Nullable Uri cameraImageUri);
 
 		void finishInitialize();
 
@@ -141,8 +133,6 @@ public interface MainActivityContracts {
 		void exitFullscreenClicked();
 
 		void backToPocketCodeClicked();
-
-		void showHelpClicked();
 
 		void showAboutClicked();
 
@@ -174,8 +164,6 @@ public interface MainActivityContracts {
 
 		void toolClicked(ToolType toolType);
 
-		void gotFocus();
-
 		void saveBeforeLoadImage();
 
 		void saveBeforeNewImage();
@@ -183,6 +171,10 @@ public interface MainActivityContracts {
 		void saveBeforeFinish();
 
 		void finishActivity();
+
+		void actionToolsClicked();
+
+		void actionCurrentToolClicked();
 	}
 
 	interface Model {
@@ -202,10 +194,6 @@ public interface MainActivityContracts {
 
 		void setFullscreen(boolean fullscreen);
 
-		boolean isOpenedFromCatroid();
-
-		void setOpenedFromCatroid(boolean openedFromCatroid);
-
 		boolean wasInitialAnimationPlayed();
 
 		void setInitialAnimationPlayed(boolean wasInitialAnimationPlayed);
@@ -214,11 +202,7 @@ public interface MainActivityContracts {
 	interface Interactor {
 		void saveCopy(SaveImageAsync.SaveImageCallback callback, int requestCode, Bitmap bitmap);
 
-		void createFile(CreateFileAsync.CreateFileCallback callback, int requestCode, @Nullable String filename);
-
 		void saveImage(SaveImageAsync.SaveImageCallback callback, int requestCode, Bitmap bitmap, Uri uri);
-
-		void loadFile(LoadImageAsync.LoadImageCallback callback, int requestCode, Uri uri);
 
 		void loadFile(LoadImageAsync.LoadImageCallback callback, int requestCode, int maxWidth, int maxHeight, Uri uri);
 	}
@@ -251,7 +235,6 @@ public interface MainActivityContracts {
 	}
 
 	interface NavigationDrawerViewHolder {
-		void removeItem(@IdRes int id);
 
 		void setVersion(String versionString);
 
@@ -269,14 +252,12 @@ public interface MainActivityContracts {
 
 		void hide();
 
-		void startAnimation(ToolType toolType);
+		boolean isVisible();
+	}
 
-		void selectToolButton(ToolType toolType);
+	interface BottomNavigationViewHolder {
+		void show();
 
-		void deSelectToolButton(ToolType toolType);
-
-		void cancelAnimation();
-
-		void scrollToButton(ToolType toolType, boolean animate);
+		void hide();
 	}
 }

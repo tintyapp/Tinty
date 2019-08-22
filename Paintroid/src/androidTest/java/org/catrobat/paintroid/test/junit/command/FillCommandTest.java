@@ -395,7 +395,7 @@ public class FillCommandTest {
 
 		runtime.gc();
 		long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
-		assertThat(memoryAfter / 1024, is(lessThan(memoryBefore / 1024 + 10)));
+		assertThat(memoryAfter / 1024, is(lessThan(memoryBefore / 1024 + 20)));
 	}
 
 	@SuppressWarnings("UnnecessaryLocalVariable")

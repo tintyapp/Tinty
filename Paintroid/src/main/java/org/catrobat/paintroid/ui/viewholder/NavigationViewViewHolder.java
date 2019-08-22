@@ -42,11 +42,6 @@ public class NavigationViewViewHolder implements MainActivityContracts.Navigatio
 	}
 
 	@Override
-	public void removeItem(int id) {
-		navigationView.getMenu().removeItem(id);
-	}
-
-	@Override
 	public void setVersion(String versionString) {
 		String appName = navigationView.getContext().getString(R.string.pocketpaint_app_name);
 		navigationMenuVersion.setTitle(appName + " v" + versionString);

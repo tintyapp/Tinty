@@ -35,7 +35,6 @@ import android.widget.Toast;
 
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.R;
-import org.catrobat.paintroid.WelcomeActivity;
 import org.catrobat.paintroid.colorpicker.ColorPickerDialog;
 import org.catrobat.paintroid.common.Constants;
 import org.catrobat.paintroid.common.MainActivityConstants.ActivityRequestCode;
@@ -50,7 +49,6 @@ import org.catrobat.paintroid.dialog.SaveBeforeLoadImageDialog;
 import org.catrobat.paintroid.dialog.SaveBeforeNewImageDialog;
 import org.catrobat.paintroid.tools.ToolReference;
 
-import static android.app.Activity.RESULT_OK;
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class MainActivityNavigator implements MainActivityContracts.Navigator {
@@ -108,13 +106,6 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 	}
 
 	@Override
-	public void startWelcomeActivity(@ActivityRequestCode int requestCode) {
-		Intent intent = new Intent(mainActivity.getApplicationContext(), WelcomeActivity.class);
-		intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-		mainActivity.startActivityForResult(intent, requestCode);
-	}
-
-	@Override
 	public void showAboutDialog() {
 		AboutDialog about = AboutDialog.newInstance();
 		about.show(mainActivity.getSupportFragmentManager(), Constants.ABOUT_DIALOG_FRAGMENT_TAG);
@@ -134,14 +125,6 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 			progressDialog.dismiss();
 		}
 		progressDialog = null;
-	}
-
-	@Override
-	public void returnToPocketCode(String path) {
-		Intent resultIntent = new Intent();
-		resultIntent.putExtra(Constants.PAINTROID_PICTURE_PATH, path);
-		mainActivity.setResult(RESULT_OK, resultIntent);
-		mainActivity.finish();
 	}
 
 	@Override
@@ -188,13 +171,6 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 	@Override
 	public void finishActivity() {
 		mainActivity.finish();
-	}
-
-	@Override
-	public void showSaveBeforeReturnToCatroidDialog() {
-		AppCompatDialogFragment dialog = SaveBeforeFinishDialog.newInstance(
-				SaveBeforeFinishDialogType.BACK_TO_POCKET_CODE);
-		showDialogFragmentSafely(dialog, Constants.SAVE_QUESTION_FRAGMENT_TAG);
 	}
 
 	@Override

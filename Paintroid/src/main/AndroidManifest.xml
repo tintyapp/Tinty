@@ -28,11 +28,6 @@
         android:supportsRtl="true">
 
         <activity
-            android:name=".WelcomeActivity"
-            android:theme="@style/PocketPaintSplashTheme"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".MainActivity"
             android:theme="@style/PocketPaintSplashTheme">
             <intent-filter>

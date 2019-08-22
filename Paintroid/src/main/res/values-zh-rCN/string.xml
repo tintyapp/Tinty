@@ -34,15 +34,12 @@
     <string name="button_line">线条</string>
     <string name="button_text">文本</string>
     <string name="button_shape">形状</string>
-    <string name="button_scroll_left">Scroll left</string>
-    <string name="button_scroll_right">Scroll right</string>
     <string name="button_layers">层</string>
     <string name="button_hand">Hand</string>
     <string name="button_apply">Apply</string>
     <string name="done">已完成</string>
     <string name="cap_circle">Circle</string>
     <string name="cap_square">Square</string>
-    <string name="dialog_tools_title">工具</string>
     <string name="dialog_error_save_title">加载/保存文件时发生错误</string>
     <string name="dialog_error_sdcard_text">检查图像或 SD 卡 ！</string>
     <string name="dialog_brush_width_text">笔画宽度</string>
@@ -120,18 +117,6 @@
     <string name="transform_info_text">将边缘拖动到新位置，然后点击可放大或裁剪图像。</string>
     <string name="cursor_draw_inactive">拖动到位置，点击开始绘画。</string>
     <string name="cursor_draw_active">拖动作画，然后点击停止作画。</string>
-    <string name="welcome_to_pocket_paint">欢迎使用口袋画板</string>
-    <string name="intro_welcome_text">口袋画板将给予您无限的创造力。如果您是初次使用请看介绍，如果你已经熟悉口袋画板了请跳过介绍。</string>
-    <string name="intro_tool_more_information">点击工具获得更多信息</string>
-    <string name="more_possibilities">更多的可能性</string>
-    <string name="intro_possibilities_text">Use the top bar to open the main menu, undo or redo changes, change the color, or show the layers dialog.</string>
-    <string name="landscape">横向</string>
-    <string name="intro_landscape_text">口袋画板也支持在横向模式下绘画，给您最好的绘画体验。</string>
-    <string name="enjoy_pocket_paint">一切就绪。请体验口袋绘图的乐趣。</string>
-    <string name="intro_get_started">开始并创建一个新的杰作。</string>
-    <string name="lets_go">开始</string>
-    <string name="next">下一步</string>
-    <string name="skip">跳过</string>
     <string name="pocketpaint_about_title">About</string>
     <string name="pocketpaint_about_version">Version %s</string>
     <string name="pocketpaint_about_license">GNU Affero General Public License, v3</string>
@@ -139,6 +124,5 @@
     <string name="pocketpaint_about_url_license_description">Pocket Paint Source Code License</string>
     <string name="pocketpaint_about_url_catrobat_description">关于 Catrobat</string>
     <string name="pocketpaint_logo">Pocket Paint logo</string>
-    <string name="pocketpaint_intro">Intro</string>
     <string name="pocketpaint_intro_split_screen_not_supported">Intro does not support split screen</string>
 </resources>
