@@ -649,7 +649,7 @@ public class MainActivityPresenterTest {
 	}
 
 	@Test
-	public void testFinishInitializeWhenRedoAvailableThensetUndoRedoButtons() {
+	public void testFinishInitializeWhenRedoAvailableThenSetUndoRedoButtons() {
 		when(commandManager.isRedoAvailable()).thenReturn(true);
 
 		presenter.finishInitialize();

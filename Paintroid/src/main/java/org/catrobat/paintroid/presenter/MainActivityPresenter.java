@@ -404,8 +404,8 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 
 		view.initializeActionBar();
 
-		if (!commandManager.isBusy()) {
-			navigator.dismissIndeterminateProgressDialog();
+		if (commandManager.isBusy()) {
+			navigator.showIndeterminateProgressDialog();
 		}
 	}
 
