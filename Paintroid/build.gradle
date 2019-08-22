@@ -17,31 +17,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-apply plugin: 'org.catrobat.gradle.androidemulators'
-
-emulators {
-    install project.hasProperty('installSdk')
-
-    dependencies {
-        sdk()
-    }
-
-    emulator 'android24', {
-        avd {
-            systemImage = 'system-images;android-24;default;x86_64'
-            sdcardSizeMb = 200
-            hardwareProperties += ['hw.ramSize': 800, 'vm.heapSize': 128]
-            screenDensity = 'xhdpi'
-        }
-
-        parameters {
-            resolution = '768x1280'
-            language = 'en'
-            country = 'US'
-        }
-    }
-}
-
 apply plugin: 'com.android.library'
 apply plugin: 'jacoco-android'
 apply plugin: 'checkstyle'
@@ -81,8 +56,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        signedRelease {
         }
         debug {
             testCoverageEnabled = project.hasProperty('enableCoverage')
@@ -145,8 +118,4 @@ publish {
     website = 'https://github.com/Catrobat/Paintroid'
     issueTracker = 'https://jira.catrob.at/browse/PAINTROID'
     repository = "${website}.git"
-}
-
-if (project.hasProperty('jenkins')) {
-    android.dexOptions.preDexLibraries = false
 }
