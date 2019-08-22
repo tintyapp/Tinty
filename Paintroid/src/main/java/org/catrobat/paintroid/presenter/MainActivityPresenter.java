@@ -163,8 +163,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	private void showSecurityQuestionBeforeExit() {
 		if (isImageUnchanged() || model.isSaved()) {
 			finishActivity();
-		} else if (model.isOpenedFromCatroid()) {
-			navigator.showSaveBeforeReturnToCatroidDialog();
 		} else {
 			navigator.showSaveBeforeFinishDialog();
 		}
@@ -391,21 +389,9 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	}
 
 	@Override
-	public void initializeFromCleanState(String extraPicturePath, String extraPictureName) {
-		boolean isOpenedFromCatroid = extraPicturePath != null;
-		model.setOpenedFromCatroid(isOpenedFromCatroid);
-		if (isOpenedFromCatroid) {
-			File imageFile = new File(extraPicturePath);
-			if (imageFile.exists()) {
-				model.setSavedPictureUri(view.getUriFromFile(imageFile));
-				interactor.loadFile(this, LOAD_IMAGE_CATROID, model.getSavedPictureUri());
-			} else {
-				interactor.createFile(this, CREATE_FILE_DEFAULT, extraPictureName);
-			}
-		} else {
-			toolController.resetToolInternalStateOnImageLoaded();
-			model.setSavedPictureUri(null);
-		}
+	public void initializeFromCleanState() {
+		toolController.resetToolInternalStateOnImageLoaded();
+		model.setSavedPictureUri(null);
 	}
 
 	@Override
@@ -419,18 +405,9 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 			exitFullscreen();
 		}
 
-		if (model.isOpenedFromCatroid()) {
-			navigationDrawerViewHolder.removeItem(R.id.pocketpaint_nav_save_image);
-			navigationDrawerViewHolder.removeItem(R.id.pocketpaint_nav_save_duplicate);
-			navigationDrawerViewHolder.removeItem(R.id.pocketpaint_nav_new_image);
-		} else {
-			navigationDrawerViewHolder.removeItem(R.id.pocketpaint_nav_back_to_pocket_code);
-			navigationDrawerViewHolder.removeItem(R.id.pocketpaint_nav_export);
-			navigationDrawerViewHolder.removeItem(R.id.pocketpaint_nav_discard_image);
-		}
 		navigationDrawerViewHolder.setVersion(BuildConfig.VERSION_NAME);
 
-		view.initializeActionBar(model.isOpenedFromCatroid());
+		view.initializeActionBar();
 
 		if (!commandManager.isBusy()) {
 			navigator.dismissIndeterminateProgressDialog();
@@ -460,11 +437,11 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	}
 
 	@Override
-	public void restoreState(boolean isFullscreen, boolean isSaved, boolean isOpenedFromCatroid,
-			boolean wasInitialAnimationPlayed, @Nullable Uri savedPictureUri, @Nullable Uri cameraImageUri) {
+	public void restoreState(boolean isFullscreen, boolean isSaved,
+							boolean wasInitialAnimationPlayed, @Nullable Uri savedPictureUri,
+							@Nullable Uri cameraImageUri) {
 		model.setFullscreen(isFullscreen);
 		model.setSaved(isSaved);
-		model.setOpenedFromCatroid(isOpenedFromCatroid);
 		model.setInitialAnimationPlayed(wasInitialAnimationPlayed);
 		model.setSavedPictureUri(savedPictureUri);
 		model.setCameraImageUri(cameraImageUri);
@@ -597,9 +574,7 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 			model.setSaved(true);
 		}
 
-		if (!model.isOpenedFromCatroid() || saveAsCopy) {
-			navigator.broadcastAddPictureToGallery(uri);
-		}
+		navigator.broadcastAddPictureToGallery(uri);
 
 		switch (requestCode) {
 			case SAVE_IMAGE_NEW_EMPTY:
@@ -608,11 +583,7 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 			case SAVE_IMAGE_DEFAULT:
 				break;
 			case SAVE_IMAGE_FINISH:
-				if (model.isOpenedFromCatroid()) {
-					navigator.returnToPocketCode(uri.getPath());
-				} else {
-					navigator.finishActivity();
-				}
+				navigator.finishActivity();
 				return;
 			case SAVE_IMAGE_LOAD_NEW:
 				navigator.startLoadImageActivity(REQUEST_CODE_LOAD_PICTURE);

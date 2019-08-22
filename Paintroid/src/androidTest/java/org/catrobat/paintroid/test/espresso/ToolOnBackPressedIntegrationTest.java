@@ -51,7 +51,6 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.DrawerActions.open;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
-import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -65,11 +64,8 @@ import static org.catrobat.paintroid.test.espresso.util.wrappers.NavigationDrawe
 import static org.catrobat.paintroid.test.espresso.util.wrappers.ToolBarViewInteraction.onToolBarView;
 import static org.catrobat.paintroid.test.espresso.util.wrappers.TopBarViewInteraction.onTopBarView;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -190,86 +186,6 @@ public class ToolOnBackPressedIntegrationTest {
 		Espresso.pressBack();
 
 		assertEquals(toolReference.get().getToolType(), ToolType.BRUSH);
-	}
-
-	@Test
-	public void testBrushToolBackPressedFromCatroidAndUsePicture() throws SecurityException, IllegalArgumentException {
-		onDrawingSurfaceView()
-				.perform(touchAt(DrawingSurfaceLocationProvider.MIDDLE));
-
-		String pathToFile =
-				Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
-						+ Constants.EXT_STORAGE_DIRECTORY_NAME
-						+ File.separator
-						+ Constants.TEMP_PICTURE_NAME
-						+ FILE_ENDING;
-
-		saveFile = new File(pathToFile);
-		launchActivityRule.getActivity().model.setSavedPictureUri(Uri.fromFile(saveFile));
-		launchActivityRule.getActivity().model.setOpenedFromCatroid(true);
-
-		Espresso.pressBack();
-
-		onConfirmQuitDialog()
-				.checkPositiveButton(matches(isDisplayed()))
-				.checkNegativeButton(matches(isDisplayed()))
-				.checkNeutralButton(matches(not(isDisplayed())))
-				.checkMessage(matches(isDisplayed()));
-
-		onView(withText(R.string.closing_catroid_security_question_title))
-				.check(matches(isDisplayed()));
-
-		Espresso.pressBack();
-
-		onConfirmQuitDialog()
-				.checkPositiveButton(doesNotExist())
-				.checkNegativeButton(doesNotExist())
-				.checkNeutralButton(doesNotExist())
-				.checkMessage(doesNotExist());
-
-		onView(withText(R.string.closing_catroid_security_question_title))
-				.check(doesNotExist());
-
-		Espresso.pressBack();
-
-		onConfirmQuitDialog().onPositiveButton()
-				.perform(click());
-
-		assertTrue(launchActivityRule.getActivity().isFinishing());
-		assertTrue(saveFile.exists());
-		assertThat(saveFile.length(), is(greaterThan(0L)));
-	}
-
-	@Test
-	public void testBrushToolBackPressedFromCatroidAndDiscardPicture() {
-		onDrawingSurfaceView()
-				.perform(touchAt(DrawingSurfaceLocationProvider.MIDDLE));
-
-		String pathToFile = launchActivityRule.getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-				+ File.separator
-				+ Constants.TEMP_PICTURE_NAME
-				+ FILE_ENDING;
-
-		saveFile = new File(pathToFile);
-		launchActivityRule.getActivity().model.setSavedPictureUri(Uri.fromFile(saveFile));
-		launchActivityRule.getActivity().model.setOpenedFromCatroid(true);
-
-		Espresso.pressBack();
-
-		onConfirmQuitDialog()
-				.checkPositiveButton(matches(isDisplayed()))
-				.checkNegativeButton(matches(isDisplayed()))
-				.checkNeutralButton(matches(not(isDisplayed())))
-				.checkMessage(matches(isDisplayed()));
-
-		onView(withText(R.string.closing_catroid_security_question_title))
-				.check(matches(isDisplayed()));
-
-		onConfirmQuitDialog().onNegativeButton()
-				.perform(click());
-
-		assertTrue(launchActivityRule.getActivity().isFinishing());
-		assertFalse(saveFile.exists());
 	}
 
 	@Test

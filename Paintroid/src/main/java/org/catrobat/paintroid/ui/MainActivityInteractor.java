@@ -23,7 +23,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 
 import org.catrobat.paintroid.contract.MainActivityContracts;
-import org.catrobat.paintroid.iotasks.CreateFileAsync;
 import org.catrobat.paintroid.iotasks.LoadImageAsync;
 import org.catrobat.paintroid.iotasks.SaveImageAsync;
 
@@ -35,18 +34,8 @@ public class MainActivityInteractor implements MainActivityContracts.Interactor 
 	}
 
 	@Override
-	public void createFile(CreateFileAsync.CreateFileCallback callback, int requestCode, String filename) {
-		new CreateFileAsync(callback, requestCode, filename).execute();
-	}
-
-	@Override
 	public void saveImage(SaveImageAsync.SaveImageCallback callback, int requestCode, Bitmap bitmap, Uri uri) {
 		new SaveImageAsync(callback, requestCode, bitmap, uri, false).execute();
-	}
-
-	@Override
-	public void loadFile(LoadImageAsync.LoadImageCallback callback, int requestCode, Uri uri) {
-		new LoadImageAsync(callback, requestCode, uri).execute();
 	}
 
 	@Override
