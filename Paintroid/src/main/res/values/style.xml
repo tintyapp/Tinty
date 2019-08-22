@@ -131,28 +131,4 @@
         <item name="android:layout_width">8dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-
-    <style name="PocketPaintWelcomeHeader" parent="@android:style/TextAppearance.Large">
-        <item name="android:textColor">@color/pocketpaint_color_picker_white</item>
-        <item name="android:fontFamily">sans-serif</item> <!--sans-serif is robot-->
-        <item name="android:textSize">24sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
-    <style name="PocketPaintWelcomeText" parent="@android:style/TextAppearance.DeviceDefault.Medium">
-        <item name="android:textColor">@color/pocketpaint_color_picker_white</item>
-        <item name="android:fontFamily">sans-serif</item> <!--sans-serif is robot-->
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
-    <style name="PocketPaintWelcomeActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorBackground">@color/pocketpaint_background_color</item>
-        <item name="android:windowBackground">@color/pocketpaint_background_color</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
 </resources>

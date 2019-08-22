@@ -34,15 +34,12 @@
     <string name="button_line">Mstari</string>
     <string name="button_text">Maandishi</string>
     <string name="button_shape">Maumbo</string>
-    <string name="button_scroll_left">Scroll left</string>
-    <string name="button_scroll_right">Scroll right</string>
     <string name="button_layers">tabaka</string>
     <string name="button_hand">Hand</string>
     <string name="button_apply">Apply</string>
     <string name="done">Maliza</string>
     <string name="cap_circle">Circle</string>
     <string name="cap_square">Square</string>
-    <string name="dialog_tools_title">Zana</string>
     <string name="dialog_error_save_title">Kosa la kupakia/kuhifadhi faili</string>
     <string name="dialog_error_sdcard_text">Angalia picha au kadi ya SD!</string>
     <string name="dialog_brush_width_text">Kata Upana</string>
@@ -120,18 +117,6 @@
     <string name="transform_info_text">Buruta kingo kwenye nafasi zao mpya, alaf bonyeza ili kupanua au kuza eneo la picha.</string>
     <string name="cursor_draw_inactive">Hamisha kuweka kwenye nafasi, halafu bonyeza ili uanze kupaka rangi.</string>
     <string name="cursor_draw_active">Hamisha ili kuchora, halafu bonyeza tena ili kuacha kupaka rangi.</string>
-    <string name="welcome_to_pocket_paint">Karibu kwenye Mfuko rangi</string>
-    <string name="intro_welcome_text">Ukiwa na Mfuko Rangi hakuna kikomo cha ubunifu wako. Kama ni mgeni anza na utangulizi au ruka kama unauelewa wa Mfuko Rangi.</string>
-    <string name="intro_tool_more_information">Bofya zana kupata maelezo zaidi</string>
-    <string name="more_possibilities">Uwezekano zaidi</string>
-    <string name="intro_possibilities_text">Use the top bar to open the main menu, undo or redo changes, change the color, or show the layers dialog.</string>
-    <string name="landscape">Kurasa mlalo</string>
-    <string name="intro_landscape_text">Mfuko Rangi pia inasaidia kuchora kwenye kurasa mlalo ili kukupa uzoefu bora wa uchoraji.</string>
-    <string name="enjoy_pocket_paint">Umeweka vyote. Furahia Mfuko Rangi.</string>
-    <string name="intro_get_started">Anza na tengeneza kito kipya.</string>
-    <string name="lets_go">Let\'s Go</string>
-    <string name="next">Ifuatayo</string>
-    <string name="skip">Ruka</string>
     <string name="pocketpaint_about_title">About</string>
     <string name="pocketpaint_about_version">Version %s</string>
     <string name="pocketpaint_about_license">GNU Affero General Public License, v3</string>
@@ -139,6 +124,5 @@
     <string name="pocketpaint_about_url_license_description">Pocket Paint Source Code License</string>
     <string name="pocketpaint_about_url_catrobat_description">Kuhusu Catrobat</string>
     <string name="pocketpaint_logo">Pocket Paint logo</string>
-    <string name="pocketpaint_intro">Intro</string>
     <string name="pocketpaint_intro_split_screen_not_supported">Intro does not support split screen</string>
 </resources>

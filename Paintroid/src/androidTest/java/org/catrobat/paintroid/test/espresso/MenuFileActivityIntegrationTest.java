@@ -33,7 +33,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.R;
-import org.catrobat.paintroid.WelcomeActivity;
 import org.catrobat.paintroid.test.espresso.util.BitmapLocationProvider;
 import org.catrobat.paintroid.test.espresso.util.DrawingSurfaceLocationProvider;
 import org.catrobat.paintroid.tools.ToolType;
@@ -57,11 +56,8 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressMenuKey;
 import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.Intents.intending;
-import static android.support.test.espresso.intent.matcher.ComponentNameMatchers.hasClassName;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
@@ -202,50 +198,6 @@ public class MenuFileActivityIntegrationTest {
 
 		onDrawingSurfaceView()
 				.check(matches(isDisplayed()));
-	}
-
-	@Test
-	public void testOnHelp() {
-		onNavigationDrawer()
-				.performOpen();
-		onView(withText(R.string.help_title)).perform(click());
-		intended(hasComponent(hasClassName(WelcomeActivity.class.getName())));
-	}
-
-	@Test
-	public void testImageUnchangedAfterHelpSkip() {
-		onDrawingSurfaceView()
-				.perform(touchAt(DrawingSurfaceLocationProvider.MIDDLE));
-
-		Bitmap imageBefore = activity.layerModel.getCurrentLayer().getBitmap();
-		imageBefore = imageBefore.copy(imageBefore.getConfig(), imageBefore.isMutable());
-
-		onNavigationDrawer()
-				.performOpen();
-		onView(withText(R.string.help_title)).perform(click());
-		intended(hasComponent(hasClassName(WelcomeActivity.class.getName())));
-		onView(withText(R.string.skip)).perform(click());
-
-		Bitmap imageAfter = activity.layerModel.getCurrentLayer().getBitmap();
-		assertTrue("Image should not have changed", imageBefore.sameAs(imageAfter));
-	}
-
-	@Test
-	public void testImageUnchangedAfterHelpAbort() {
-		onDrawingSurfaceView()
-				.perform(touchAt(DrawingSurfaceLocationProvider.MIDDLE));
-
-		Bitmap imageBefore = activity.layerModel.getCurrentLayer().getBitmap();
-		imageBefore = imageBefore.copy(imageBefore.getConfig(), imageBefore.isMutable());
-
-		onNavigationDrawer()
-				.performOpen();
-		onView(withText(R.string.help_title)).perform(click());
-		intended(hasComponent(hasClassName(WelcomeActivity.class.getName())));
-		pressBack();
-
-		Bitmap imageAfter = activity.layerModel.getCurrentLayer().getBitmap();
-		assertTrue("Image should not have changed", imageBefore.sameAs(imageAfter));
 	}
 
 	@Test

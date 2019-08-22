@@ -48,7 +48,6 @@
             <Space style="@style/PocketPaintToolHorizontalSpace" />
 
             <TextView
-                android:id="@+id/pocketpaint_transform_width_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/pocketpaint_transform_width_value"
@@ -78,7 +77,6 @@
                 android:layout_width="16dp" />
 
             <TextView
-                android:id="@+id/pocketpaint_transform_height_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/pocketpaint_transform_height_value"

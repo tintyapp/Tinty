@@ -34,15 +34,12 @@
     <string name="button_line">خط رسم</string>
     <string name="button_text">النص</string>
     <string name="button_shape">الأشكال</string>
-    <string name="button_scroll_left">Scroll left</string>
-    <string name="button_scroll_right">Scroll right</string>
     <string name="button_layers">طبقات</string>
     <string name="button_hand">Hand</string>
     <string name="button_apply">تطبيق</string>
     <string name="done">موافق</string>
     <string name="cap_circle">Circle</string>
     <string name="cap_square">Square</string>
-    <string name="dialog_tools_title">أدوات</string>
     <string name="dialog_error_save_title">خطأ في استيراد/حفظ الملف</string>
     <string name="dialog_error_sdcard_text">تحقق من بطاقة الذاكرة SD أو الصورة!</string>
     <string name="dialog_brush_width_text">عرض الخط</string>
@@ -120,18 +117,6 @@
     <string name="transform_info_text">اسحب الحواف إلى المركز الجديد، ثم اضغط للتكبير أو اقتصاص صورة المنطقة.</string>
     <string name="cursor_draw_inactive">حرك ببطئ لتحديد الموضع, ثم انقر لبدء التلوين.</string>
     <string name="cursor_draw_active">حرك ببطئ للرسم, ثم انقر مجدداً لإيقاف التلوين.</string>
-    <string name="welcome_to_pocket_paint">مرحبا بكم في بوكت بينت</string>
-    <string name="intro_welcome_text">مع بوكت بينت لا حدود لابداعك. إذا كنت جديداً, ابدأ المقدمة أو قم بتخطيها في حال كنت مألوفاً مع بوكت بينت.</string>
-    <string name="intro_tool_more_information">انقر على الأداة للحصول على المزيد من المعلومات</string>
-    <string name="more_possibilities">إمكانيات أكثر</string>
-    <string name="intro_possibilities_text">استخدم الشريط العلوي لفتح القائمة الرئيسية, التراجع أو إعادة التغييرات, تغيير اللون, أو إظهار مربع حوار الطبقات.</string>
-    <string name="landscape">أفقي</string>
-    <string name="intro_landscape_text">بوكت بينت ايضاً يدعم الرسم في الوضع الأفقي لإعطائك أفضل تجربة للرسم.</string>
-    <string name="enjoy_pocket_paint">أنت مستعد. تمتع بـ بوكت بينت.</string>
-    <string name="intro_get_started">الشروع في العمل و إنشاء عمل فني جديد.</string>
-    <string name="lets_go">لنبدأ</string>
-    <string name="next">التالي</string>
-    <string name="skip">تخطى</string>
     <string name="pocketpaint_about_title">حول</string>
     <string name="pocketpaint_about_version">Version %s</string>
     <string name="pocketpaint_about_license">GNU Affero General Public License, v3</string>
@@ -139,6 +124,5 @@
     <string name="pocketpaint_about_url_license_description">رخصة النص الأصلي لبرنامج بوكت بينت</string>
     <string name="pocketpaint_about_url_catrobat_description">حول كاتروبات</string>
     <string name="pocketpaint_logo">Pocket Paint logo</string>
-    <string name="pocketpaint_intro">Intro</string>
     <string name="pocketpaint_intro_split_screen_not_supported">Intro does not support split screen</string>
 </resources>

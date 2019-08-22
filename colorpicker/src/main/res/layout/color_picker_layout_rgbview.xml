@@ -191,7 +191,6 @@
             android:paddingTop="12dp">
 
             <TextView
-                android:id="@+id/color_picker_color_rgb_textview_hex"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"

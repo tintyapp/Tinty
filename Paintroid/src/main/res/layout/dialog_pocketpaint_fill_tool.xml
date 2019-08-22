@@ -28,7 +28,6 @@
         android:focusableInTouchMode="true">
 
     <TextView
-        android:id="@+id/pocketpaint_fill_tool_dialog_color_tolerance_input_text_view"
         style="@style/PocketPaintToolSubtitle"
         android:labelFor="@+id/pocketpaint_fill_tool_dialog_color_tolerance_input"
         android:text="@string/fill_tool_dialog_color_tolerance_title" />
