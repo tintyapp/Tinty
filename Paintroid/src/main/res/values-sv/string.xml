@@ -34,15 +34,12 @@
     <string name="button_line">Linje</string>
     <string name="button_text">Text</string>
     <string name="button_shape">Former</string>
-    <string name="button_scroll_left">Scroll left</string>
-    <string name="button_scroll_right">Scroll right</string>
     <string name="button_layers">lager</string>
     <string name="button_hand">Hand</string>
     <string name="button_apply">Apply</string>
     <string name="done">Färdigt</string>
     <string name="cap_circle">Circle</string>
     <string name="cap_square">Square</string>
-    <string name="dialog_tools_title">verktyg</string>
     <string name="dialog_error_save_title">Fel ladda/spara filen</string>
     <string name="dialog_error_sdcard_text">Kolla bild eller SD-kort!</string>
     <string name="dialog_brush_width_text">Streckbredd</string>
@@ -120,18 +117,6 @@
     <string name="transform_info_text">Drag edges to their new position, then tap to enlarge or crop the image area.</string>
     <string name="cursor_draw_inactive">Pan to position, then tap to start painting.</string>
     <string name="cursor_draw_active">Pan to draw, then tap again to stop painting.</string>
-    <string name="welcome_to_pocket_paint">Welcome To Pocket Paint</string>
-    <string name="intro_welcome_text">With Pocket Paint there are no limits to your creativity. If you are new start the intro or just skip it if you are already familiar with Pocket Paint.</string>
-    <string name="intro_tool_more_information">Click on a Tool to get more information</string>
-    <string name="more_possibilities">More possibilities</string>
-    <string name="intro_possibilities_text">Use the top bar to open the main menu, undo or redo changes, change the color, or show the layers dialog.</string>
-    <string name="landscape">Landscape</string>
-    <string name="intro_landscape_text">Pocket Paint also supports drawing in landscape mode to give you the best painting experience.</string>
-    <string name="enjoy_pocket_paint">You are all set. Enjoy Pocket Paint.</string>
-    <string name="intro_get_started">Get started and create a new masterpiece.</string>
-    <string name="lets_go">Let\'s Go</string>
-    <string name="next">Nästa</string>
-    <string name="skip">Hoppa över</string>
     <string name="pocketpaint_about_title">About</string>
     <string name="pocketpaint_about_version">Version %s</string>
     <string name="pocketpaint_about_license">GNU Affero General Public License, v3</string>
@@ -139,6 +124,5 @@
     <string name="pocketpaint_about_url_license_description">Pocket Paint Source Code License</string>
     <string name="pocketpaint_about_url_catrobat_description">Om Catrobat</string>
     <string name="pocketpaint_logo">Pocket Paint logo</string>
-    <string name="pocketpaint_intro">Intro</string>
     <string name="pocketpaint_intro_split_screen_not_supported">Intro does not support split screen</string>
 </resources>

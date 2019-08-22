@@ -47,8 +47,6 @@ public interface MainActivityContracts {
 
 		void showAboutDialog();
 
-		void startWelcomeActivity(@ActivityRequestCode int requestCode);
-
 		void showIndeterminateProgressDialog();
 
 		void dismissIndeterminateProgressDialog();
@@ -135,8 +133,6 @@ public interface MainActivityContracts {
 		void exitFullscreenClicked();
 
 		void backToPocketCodeClicked();
-
-		void showHelpClicked();
 
 		void showAboutClicked();
 

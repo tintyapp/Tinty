@@ -289,14 +289,6 @@ public class MainActivityPresenterTest {
 	}
 
 	@Test
-	public void testShowHelpClickedThenStartWelcomeActivity() {
-		presenter.showHelpClicked();
-
-		verify(navigator).startWelcomeActivity(REQUEST_CODE_INTRO);
-		verifyNoMoreInteractions(navigator);
-	}
-
-	@Test
 	public void testShowAboutClickedThenShowAboutDialog() {
 		presenter.showAboutClicked();
 

@@ -33,7 +33,6 @@ import android.widget.Toast;
 
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.R;
-import org.catrobat.paintroid.WelcomeActivity;
 import org.catrobat.paintroid.colorpicker.ColorPickerDialog;
 import org.catrobat.paintroid.common.Constants;
 import org.catrobat.paintroid.common.MainActivityConstants.ActivityRequestCode;
@@ -93,13 +92,6 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("image/*");
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-		mainActivity.startActivityForResult(intent, requestCode);
-	}
-
-	@Override
-	public void startWelcomeActivity(@ActivityRequestCode int requestCode) {
-		Intent intent = new Intent(mainActivity.getApplicationContext(), WelcomeActivity.class);
-		intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 		mainActivity.startActivityForResult(intent, requestCode);
 	}
 

@@ -206,11 +206,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	}
 
 	@Override
-	public void showHelpClicked() {
-		navigator.startWelcomeActivity(REQUEST_CODE_INTRO);
-	}
-
-	@Override
 	public void showAboutClicked() {
 		navigator.showAboutDialog();
 	}

@@ -34,8 +34,6 @@
     <string name="button_line">Çizgi</string>
     <string name="button_text">Metin</string>
     <string name="button_shape">Şekiller</string>
-    <string name="button_scroll_left">Scroll left</string>
-    <string name="button_scroll_right">Scroll right</string>
     <string name="button_layers">Katman
 Katmanlar</string>
     <string name="button_hand">Hand</string>
@@ -43,7 +41,6 @@ Katmanlar</string>
     <string name="done">Tamam</string>
     <string name="cap_circle">Circle</string>
     <string name="cap_square">Square</string>
-    <string name="dialog_tools_title">Araçlar</string>
     <string name="dialog_error_save_title">Dosya yüklenirken/kaydedilirken hata</string>
     <string name="dialog_error_sdcard_text">Resmi veya SD kartı kontrol et!</string>
     <string name="dialog_brush_width_text">Fırça Genişliği</string>
@@ -121,18 +118,6 @@ Katmanlar</string>
     <string name="transform_info_text">Kenarları yeni konumlarına sürükle, sonra büyütmek veya resim alanını kırpmak için dokun.</string>
     <string name="cursor_draw_inactive">Konumlandırmak için kaydır ve çizmeye başlamak için dokun.</string>
     <string name="cursor_draw_active">Çizmek için kaydır ve çizmeyi bırakmak için tekrar dokun.</string>
-    <string name="welcome_to_pocket_paint">Pocket Paint\'e hoş geldiniz</string>
-    <string name="intro_welcome_text">Pocket Paint ile yaratıcılığınızın sınırı yok. Yeniyseniz tanıtımı başlatın; Pocket Paint\'i biliyorsanız bu kısmı atlayın.</string>
-    <string name="intro_tool_more_information">Daha fazla bilgi almak için bir araca tıkla</string>
-    <string name="more_possibilities">Daha fazla olanak</string>
-    <string name="intro_possibilities_text">Ana menüyü açmak, geri al veya yinele, rengini değiştirmek veya Katmanlardaki diyaloğu  görmek için üst çubuğu kullanın.</string>
-    <string name="landscape">Yatay</string>
-    <string name="intro_landscape_text">En iyi çizim deneyimi için Pocket Paint yatay modda çizimi de destekler.</string>
-    <string name="enjoy_pocket_paint">Her şey ayarlandı. Pocket Code\'un keyfini çıkar.</string>
-    <string name="intro_get_started">Başla ve yeni bir şaheser yarat.</string>
-    <string name="lets_go">Hadi Gidelim</string>
-    <string name="next">İleri</string>
-    <string name="skip">Atla</string>
     <string name="pocketpaint_about_title">About</string>
     <string name="pocketpaint_about_version">Version %s</string>
     <string name="pocketpaint_about_license">GNU Affero General Public License, v3</string>
@@ -140,6 +125,5 @@ Katmanlar</string>
     <string name="pocketpaint_about_url_license_description">Pocket Paint Source Code License</string>
     <string name="pocketpaint_about_url_catrobat_description">Catrobat hakkında</string>
     <string name="pocketpaint_logo">Pocket Paint logo</string>
-    <string name="pocketpaint_intro">Intro</string>
     <string name="pocketpaint_intro_split_screen_not_supported">Intro does not support split screen</string>
 </resources>

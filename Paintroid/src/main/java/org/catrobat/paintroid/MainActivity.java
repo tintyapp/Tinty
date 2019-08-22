@@ -450,8 +450,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 			presenter.enterFullscreenClicked();
 		} else if (i == R.id.pocketpaint_nav_exit_fullscreen_mode) {
 			presenter.exitFullscreenClicked();
-		} else if (i == R.id.pocketpaint_nav_help) {
-			presenter.showHelpClicked();
 		} else if (i == R.id.pocketpaint_nav_about) {
 			presenter.showAboutClicked();
 		} else {

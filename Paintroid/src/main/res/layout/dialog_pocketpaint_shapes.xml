@@ -94,9 +94,7 @@
 
     <View style="@style/PocketPaintToolSectionDivider"/>
 
-    <LinearLayout
-        android:id="@+id/pocketpaint_shapes_container"
-        style="@style/PocketPaintToolSection">
+    <LinearLayout style="@style/PocketPaintToolSection">
 
         <ImageButton
             android:id="@+id/pocketpaint_shapes_square_btn"
