@@ -1,7 +1,7 @@
 <h1 align="center">Tinty</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/circleci/build/github/TintyApp/Tinty?label=CircleCI">
+  <img src="https://img.shields.io/circleci/build/github/tintyapp/Tinty?label=CircleCI">
   <img src="https://img.shields.io/travis/TintyApp/Tinty?label=Travis">
   <img src="https://img.shields.io/github/license/TintyApp/Tinty">
 </p>
