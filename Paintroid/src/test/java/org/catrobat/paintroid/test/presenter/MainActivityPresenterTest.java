@@ -74,7 +74,6 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -214,17 +213,6 @@ public class MainActivityPresenterTest {
 		presenter.backToPocketCodeClicked();
 
 		verify(navigator).finishActivity();
-		verifyNoMoreInteractions(navigator);
-	}
-
-	@Test
-	public void testBackToCatroidClickedWhenUndoAvailableAndOpenedFromCatroidThenShowSaveBeforeReturnDialog() {
-		when(model.isOpenedFromCatroid()).thenReturn(true);
-		when(commandManager.isUndoAvailable()).thenReturn(true);
-
-		presenter.backToPocketCodeClicked();
-
-		verify(navigator).showSaveBeforeReturnToCatroidDialog();
 		verifyNoMoreInteractions(navigator);
 	}
 
@@ -588,43 +576,21 @@ public class MainActivityPresenterTest {
 
 	@Test
 	public void testInitializeFromCleanStateWhenDefaultThenUnsetSavedPictureUri() {
-		presenter.initializeFromCleanState(null, null);
+		presenter.initializeFromCleanState();
 
-		verify(model).setOpenedFromCatroid(false);
 		verify(model).setSavedPictureUri(null);
 	}
 
 	@Test
 	public void testInitializeFromCleanStateWhenDefaultThenResetTool() {
-		presenter.initializeFromCleanState(null, null);
+		presenter.initializeFromCleanState();
 
 		verify(toolController).resetToolInternalStateOnImageLoaded();
 	}
 
 	@Test
-	public void testInitializeFromCleanStateWhenFromCatroidAndPathNotExistentThenCreateFile() {
-		presenter.initializeFromCleanState("testPath", "testName");
-
-		verify(model).setOpenedFromCatroid(true);
-		verify(interactor).createFile(presenter, CREATE_FILE_DEFAULT, "testName");
-	}
-
-	@Test
-	public void testInitializeFromCleanStateWhenFromCatroidAndPathExistsThenLoadFile() {
-		Uri uri = mock(Uri.class);
-		when(model.getSavedPictureUri()).thenReturn(uri);
-		when(view.getUriFromFile(any(File.class))).thenReturn(uri);
-
-		presenter.initializeFromCleanState("/", "testName");
-
-		verify(model).setOpenedFromCatroid(true);
-		verify(model).setSavedPictureUri(uri);
-		verify(interactor).loadFile(presenter, LOAD_IMAGE_CATROID, uri);
-	}
-
-	@Test
 	public void testRestoreStateThenRestoreFragmentListeners() {
-		presenter.restoreState(false, false, false, false, null, null);
+		presenter.restoreState(false, false, false, null, null);
 
 		verify(navigator).restoreFragmentListeners();
 	}
@@ -634,11 +600,10 @@ public class MainActivityPresenterTest {
 		Uri savedPictureUri = mock(Uri.class);
 		Uri cameraImageUri = mock(Uri.class);
 
-		presenter.restoreState(false, false, false, false, savedPictureUri, cameraImageUri);
+		presenter.restoreState(false, false, false, savedPictureUri, cameraImageUri);
 
 		verify(model).setFullscreen(false);
 		verify(model).setSaved(false);
-		verify(model).setOpenedFromCatroid(false);
 		verify(model).setInitialAnimationPlayed(false);
 		verify(model).setSavedPictureUri(savedPictureUri);
 		verify(model).setCameraImageUri(cameraImageUri);
@@ -649,11 +614,10 @@ public class MainActivityPresenterTest {
 		Uri savedPictureUri = mock(Uri.class);
 		Uri cameraImageUri = mock(Uri.class);
 
-		presenter.restoreState(true, true, true, true, savedPictureUri, cameraImageUri);
+		presenter.restoreState(true, true, true, savedPictureUri, cameraImageUri);
 
 		verify(model).setFullscreen(true);
 		verify(model).setSaved(true);
-		verify(model).setOpenedFromCatroid(true);
 		verify(model).setInitialAnimationPlayed(true);
 		verify(model).setSavedPictureUri(savedPictureUri);
 		verify(model).setCameraImageUri(cameraImageUri);
@@ -661,7 +625,7 @@ public class MainActivityPresenterTest {
 
 	@Test
 	public void testRestoreStateThenResetTool() {
-		presenter.restoreState(false, false, false, false, null, null);
+		presenter.restoreState(false, false, false, null, null);
 
 		verify(toolController).resetToolInternalStateOnImageLoaded();
 	}
@@ -732,34 +696,7 @@ public class MainActivityPresenterTest {
 	public void testFinishInitializeWhenDefaultThenInitializeActionBarDefault() {
 		presenter.finishInitialize();
 
-		verify(view).initializeActionBar(false);
-	}
-
-	@Test
-	public void testFinishInitializeWhenFromCatroidThenInitializeActionBarCatroid() {
-		when(model.isOpenedFromCatroid()).thenReturn(true);
-
-		presenter.finishInitialize();
-
-		verify(view).initializeActionBar(true);
-	}
-
-	@Test
-	public void testFinishInitializeWhenDefaultThenRemoveCatroidNavigationItems() {
-		presenter.finishInitialize();
-
-		verify(navigationDrawerViewHolder).removeItem(R.id.pocketpaint_nav_export);
-		verify(navigationDrawerViewHolder).removeItem(R.id.pocketpaint_nav_back_to_pocket_code);
-	}
-
-	@Test
-	public void testFinishInitializeWhenFromCatroidThenRemoveSaveNavigationItems() {
-		when(model.isOpenedFromCatroid()).thenReturn(true);
-
-		presenter.finishInitialize();
-
-		verify(navigationDrawerViewHolder).removeItem(R.id.pocketpaint_nav_save_image);
-		verify(navigationDrawerViewHolder).removeItem(R.id.pocketpaint_nav_save_duplicate);
+		verify(view).initializeActionBar();
 	}
 
 	@Test
@@ -1204,7 +1141,6 @@ public class MainActivityPresenterTest {
 		verify(model, never()).setSavedPictureUri(any(Uri.class));
 		verify(model, never()).setCameraImageUri(any(Uri.class));
 		verify(model, never()).setSaved(anyBoolean());
-		verify(model, never()).setOpenedFromCatroid(anyBoolean());
 		verify(model, never()).setInitialAnimationPlayed(anyBoolean());
 		verify(model, never()).setFullscreen(anyBoolean());
 	}
@@ -1221,26 +1157,6 @@ public class MainActivityPresenterTest {
 	@Test
 	public void testOnSaveImagePostExecuteWhenSavedAsCopyThenBroadcastToPictureGallery() {
 		Uri uri = mock(Uri.class);
-
-		presenter.onSaveImagePostExecute(SAVE_IMAGE_DEFAULT, uri, true);
-
-		verify(navigator).broadcastAddPictureToGallery(uri);
-	}
-
-	@Test
-	public void testOnSaveImagePostExecuteWhenSavedFromCatroidThenDoNotBroadcastToPictureGallery() {
-		Uri uri = mock(Uri.class);
-		when(model.isOpenedFromCatroid()).thenReturn(true);
-
-		presenter.onSaveImagePostExecute(SAVE_IMAGE_DEFAULT, uri, false);
-
-		verify(navigator, never()).broadcastAddPictureToGallery(uri);
-	}
-
-	@Test
-	public void testOnSaveImagePostExecuteWhenSavedAsCopyFromCatroidThenBroadcastToPictureGallery() {
-		Uri uri = mock(Uri.class);
-		when(model.isOpenedFromCatroid()).thenReturn(true);
 
 		presenter.onSaveImagePostExecute(SAVE_IMAGE_DEFAULT, uri, true);
 
@@ -1270,7 +1186,6 @@ public class MainActivityPresenterTest {
 		presenter.onSaveImagePostExecute(SAVE_IMAGE_DEFAULT, uri, false);
 
 		verify(navigator, never()).startLoadImageActivity(anyInt());
-		verify(navigator, never()).returnToPocketCode(anyString());
 		verify(navigator, never()).finishActivity();
 	}
 
@@ -1290,17 +1205,6 @@ public class MainActivityPresenterTest {
 		presenter.onSaveImagePostExecute(SAVE_IMAGE_LOAD_NEW, uri, false);
 
 		verify(navigator).startLoadImageActivity(REQUEST_CODE_LOAD_PICTURE);
-	}
-
-	@Test
-	public void testOnSaveImagePostExecuteWhenExitToCatroidThenReturnToCatroid() {
-		Uri uri = mock(Uri.class);
-		when(uri.getPath()).thenReturn("testPath");
-		when(model.isOpenedFromCatroid()).thenReturn(true);
-
-		presenter.onSaveImagePostExecute(SAVE_IMAGE_FINISH, uri, false);
-
-		verify(navigator).returnToPocketCode("testPath");
 	}
 
 	@Test(expected = IllegalArgumentException.class)

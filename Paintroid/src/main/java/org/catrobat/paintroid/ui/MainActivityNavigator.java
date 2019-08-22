@@ -48,7 +48,6 @@ import org.catrobat.paintroid.dialog.SaveBeforeLoadImageDialog;
 import org.catrobat.paintroid.dialog.SaveBeforeNewImageDialog;
 import org.catrobat.paintroid.tools.ToolReference;
 
-import static android.app.Activity.RESULT_OK;
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class MainActivityNavigator implements MainActivityContracts.Navigator {
@@ -134,14 +133,6 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 	}
 
 	@Override
-	public void returnToPocketCode(String path) {
-		Intent resultIntent = new Intent();
-		resultIntent.putExtra(Constants.PAINTROID_PICTURE_PATH, path);
-		mainActivity.setResult(RESULT_OK, resultIntent);
-		mainActivity.finish();
-	}
-
-	@Override
 	public void showToast(int resId, int duration) {
 		ToastFactory.makeText(mainActivity, resId, duration).show();
 	}
@@ -185,13 +176,6 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 	@Override
 	public void finishActivity() {
 		mainActivity.finish();
-	}
-
-	@Override
-	public void showSaveBeforeReturnToCatroidDialog() {
-		AppCompatDialogFragment dialog = SaveBeforeFinishDialog.newInstance(
-				SaveBeforeFinishDialogType.BACK_TO_POCKET_CODE);
-		dialog.show(mainActivity.getSupportFragmentManager(), Constants.SAVE_QUESTION_FRAGMENT_TAG);
 	}
 
 	@Override

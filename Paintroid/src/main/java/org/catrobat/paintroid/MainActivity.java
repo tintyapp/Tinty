@@ -90,18 +90,12 @@ import org.catrobat.paintroid.ui.viewholder.NavigationViewViewHolder;
 import org.catrobat.paintroid.ui.viewholder.TopBarViewHolder;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.catrobat.paintroid.common.Constants.PAINTROID_PICTURE_NAME;
-import static org.catrobat.paintroid.common.Constants.PAINTROID_PICTURE_PATH;
 
 public class MainActivity extends AppCompatActivity implements MainActivityContracts.MainView,
 		CommandManager.CommandListener {
 	public static final String TAG = MainActivity.class.getSimpleName();
 	private static final String IS_FULLSCREEN_KEY = "isFullscreen";
 	private static final String IS_SAVED_KEY = "isSaved";
-	private static final String IS_OPENED_FROM_CATROID_KEY = "isOpenedFromCatroid";
 	private static final String WAS_INITIAL_ANIMATION_PLAYED = "wasInitialAnimationPlayed";
 	private static final String SAVED_PICTURE_URI_KEY = "savedPictureUri";
 	private static final String CAMERA_IMAGE_URI_KEY = "cameraImageUri";
@@ -176,20 +170,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 		presenter.onCreateTool();
 
 		if (savedInstanceState == null) {
-			Intent intent = getIntent();
-			String picturePath = intent.getStringExtra(PAINTROID_PICTURE_PATH);
-			String pictureName = intent.getStringExtra(PAINTROID_PICTURE_NAME);
-			presenter.initializeFromCleanState(picturePath, pictureName);
+			presenter.initializeFromCleanState();
 		} else {
 			boolean isFullscreen = savedInstanceState.getBoolean(IS_FULLSCREEN_KEY, false);
 			boolean isSaved = savedInstanceState.getBoolean(IS_SAVED_KEY, false);
-			boolean isOpenedFromCatroid = savedInstanceState.getBoolean(IS_OPENED_FROM_CATROID_KEY, false);
 			boolean wasInitialAnimationPlayed = savedInstanceState.getBoolean(WAS_INITIAL_ANIMATION_PLAYED, false);
 			Uri savedPictureUri = savedInstanceState.getParcelable(SAVED_PICTURE_URI_KEY);
 			Uri cameraImageUri = savedInstanceState.getParcelable(CAMERA_IMAGE_URI_KEY);
 
-			presenter.restoreState(isFullscreen, isSaved, isOpenedFromCatroid,
-					wasInitialAnimationPlayed, savedPictureUri, cameraImageUri);
+			presenter.restoreState(isFullscreen, isSaved, wasInitialAnimationPlayed,
+					savedPictureUri, cameraImageUri);
 		}
 
 		commandManager.addCommandListener(this);
@@ -346,7 +336,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	}
 
 	private void setBottomBarListeners(final BottomBarViewHolder viewHolder) {
-		List<ToolType> toolTypes = Arrays.asList(ToolType.values());
+		ToolType[] toolTypes = ToolType.values();
 		for (final ToolType type : toolTypes) {
 			View toolButton = viewHolder.layout.findViewById(type.getToolButtonID());
 			if (toolButton == null) {
@@ -401,17 +391,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	}
 
 	@Override
-	public void initializeActionBar(boolean isOpenedFromCatroid) {
+	public void initializeActionBar() {
 		Toolbar toolbar = findViewById(R.id.pocketpaint_toolbar);
 		setSupportActionBar(toolbar);
 
-		boolean showHome = model.isOpenedFromCatroid();
 		ActionBar supportActionBar = getSupportActionBar();
 		if (supportActionBar != null) {
 			supportActionBar.setDisplayShowTitleEnabled(false);
 			supportActionBar.setDisplayHomeAsUpEnabled(true);
 			supportActionBar.setHomeButtonEnabled(true);
-			supportActionBar.setDisplayShowHomeEnabled(showHome);
+			supportActionBar.setDisplayShowHomeEnabled(false);
 		}
 
 		ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
@@ -449,11 +438,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
 	private void onNavigationItemSelected(@NonNull MenuItem item) {
 		int i = item.getItemId();
-		if (i == R.id.pocketpaint_nav_back_to_pocket_code) {
-			presenter.backToPocketCodeClicked();
-		} else if (i == R.id.pocketpaint_nav_export) {
-			presenter.saveCopyClicked();
-		} else if (i == R.id.pocketpaint_nav_save_image) {
+		if (i == R.id.pocketpaint_nav_save_image) {
 			presenter.saveImageClicked();
 		} else if (i == R.id.pocketpaint_nav_save_duplicate) {
 			presenter.saveCopyClicked();
@@ -461,8 +446,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 			presenter.loadImageClicked();
 		} else if (i == R.id.pocketpaint_nav_new_image) {
 			presenter.newImageClicked();
-		} else if (i == R.id.pocketpaint_nav_discard_image) {
-			presenter.discardImageClicked();
 		} else if (i == R.id.pocketpaint_nav_fullscreen_mode) {
 			presenter.enterFullscreenClicked();
 		} else if (i == R.id.pocketpaint_nav_exit_fullscreen_mode) {
@@ -482,7 +465,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
 		outState.putBoolean(IS_FULLSCREEN_KEY, model.isFullscreen());
 		outState.putBoolean(IS_SAVED_KEY, model.isSaved());
-		outState.putBoolean(IS_OPENED_FROM_CATROID_KEY, model.isOpenedFromCatroid());
 		outState.putBoolean(WAS_INITIAL_ANIMATION_PLAYED, model.wasInitialAnimationPlayed());
 		outState.putParcelable(SAVED_PICTURE_URI_KEY, model.getSavedPictureUri());
 		outState.putParcelable(CAMERA_IMAGE_URI_KEY, model.getCameraImageUri());
