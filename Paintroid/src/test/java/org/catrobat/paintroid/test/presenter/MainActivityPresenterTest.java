@@ -93,11 +93,9 @@ public class MainActivityPresenterTest {
 	@Mock
 	private MainActivityContracts.Interactor interactor;
 	@Mock
-	private MainActivityContracts.TopBarViewHolder topBarViewHolder;
+	private MainActivityContracts.ActionBarViewHolder actionBar;
 	@Mock
 	private MainActivityContracts.DrawerLayoutViewHolder drawerLayoutViewHolder;
-	@Mock
-	private MainActivityContracts.NavigationDrawerViewHolder navigationDrawerViewHolder;
 	@Mock
 	private Workspace workspace;
 	@Mock
@@ -126,8 +124,8 @@ public class MainActivityPresenterTest {
 
 	@Test
 	public void testSetUp() {
-		verifyZeroInteractions(view, model, navigator, interactor, topBarViewHolder, workspace, perspective,
-				drawerLayoutViewHolder, navigationDrawerViewHolder, commandFactory, commandManager, bottomBarViewHolder,
+		verifyZeroInteractions(view, model, navigator, interactor, actionBar, workspace, perspective,
+				drawerLayoutViewHolder, commandFactory, commandManager, bottomBarViewHolder,
 				bottomNavigationViewHolder, toolController);
 	}
 
@@ -173,46 +171,6 @@ public class MainActivityPresenterTest {
 		presenter.newImageClicked();
 
 		verify(navigator).showSaveBeforeNewImageDialog();
-		verifyNoMoreInteractions(navigator);
-	}
-
-	@Test
-	public void testDiscardImageClickedThenClearsLayers() {
-		Command command = mock(Command.class);
-		when(commandFactory.createResetCommand()).thenReturn(command);
-
-		presenter.discardImageClicked();
-
-		verify(commandManager).addCommand(command);
-		verifyNoMoreInteractions(commandManager, navigator);
-	}
-
-	@Test
-	public void testBackToCatroidClickedWhenUnchangedThenFinishActivity() {
-		presenter.backToPocketCodeClicked();
-
-		verify(navigator).finishActivity();
-		verifyNoMoreInteractions(navigator);
-	}
-
-	@Test
-	public void testBackToCatroidClickedWhenUndoAvailableThenShowSaveDialog() {
-		when(commandManager.isUndoAvailable()).thenReturn(true);
-
-		presenter.backToPocketCodeClicked();
-
-		verify(navigator).showSaveBeforeFinishDialog();
-		verifyNoMoreInteractions(navigator);
-	}
-
-	@Test
-	public void testBackToCatroidClickedWhenUndoAvailableAndSavedThenFinishActivity() {
-		when(model.isSaved()).thenReturn(true);
-		when(commandManager.isUndoAvailable()).thenReturn(true);
-
-		presenter.backToPocketCodeClicked();
-
-		verify(navigator).finishActivity();
 		verifyNoMoreInteractions(navigator);
 	}
 
@@ -266,11 +224,9 @@ public class MainActivityPresenterTest {
 		presenter.enterFullscreenClicked();
 
 		verify(model).setFullscreen(true);
-		verify(topBarViewHolder).hide();
+		verify(actionBar).hide();
 		verify(view).hideKeyboard();
 		verify(view).enterFullscreen();
-		verify(navigationDrawerViewHolder).hideEnterFullscreen();
-		verify(navigationDrawerViewHolder).showExitFullscreen();
 		verify(toolController).disableToolOptionsView();
 		verify(perspective).enterFullscreen();
 	}
@@ -280,10 +236,8 @@ public class MainActivityPresenterTest {
 		presenter.exitFullscreenClicked();
 
 		verify(model).setFullscreen(false);
-		verify(topBarViewHolder).show();
+		verify(actionBar).show();
 		verify(view).exitFullscreen();
-		verify(navigationDrawerViewHolder).showEnterFullscreen();
-		verify(navigationDrawerViewHolder).hideExitFullscreen();
 		verify(toolController).enableToolOptionsView();
 		verify(perspective).exitFullscreen();
 	}
@@ -548,8 +502,8 @@ public class MainActivityPresenterTest {
 	public void testOnCommandPostExecuteThenSetUndoRedoButtons() {
 		presenter.onCommandPostExecute();
 
-		verify(topBarViewHolder).disableRedoButton();
-		verify(topBarViewHolder).disableUndoButton();
+		verify(actionBar).setUndoButtonEnabled(false);
+		verify(actionBar).setRedoButtonEnabled(false);
 	}
 
 	@Test
@@ -560,10 +514,10 @@ public class MainActivityPresenterTest {
 	}
 
 	@Test
-	public void testSetTopBarColorThenSetColorButtonColor() {
-		presenter.setTopBarColor(Color.GREEN);
+	public void testSetColorButtonColorThenSetColorButtonColor() {
+		presenter.setColorButtonColor(Color.GREEN);
 
-		verify(topBarViewHolder).setColorButtonColor(Color.GREEN);
+		verify(bottomNavigationViewHolder).setColorButtonColor(Color.GREEN);
 	}
 
 	@Test
@@ -634,8 +588,9 @@ public class MainActivityPresenterTest {
 	public void testFinishInitializeThenSetUndoRedoButtons() {
 		presenter.finishInitialize();
 
-		verify(topBarViewHolder).disableUndoButton();
-		verify(topBarViewHolder).disableRedoButton();
+		verify(actionBar).setUndoButtonEnabled(false);
+		verify(actionBar).setRedoButtonEnabled(false);
+		verify(actionBar).invalidateOptionsMenu();
 	}
 
 	@Test
@@ -644,8 +599,9 @@ public class MainActivityPresenterTest {
 
 		presenter.finishInitialize();
 
-		verify(topBarViewHolder).enableUndoButton();
-		verify(topBarViewHolder).disableRedoButton();
+		verify(actionBar).setUndoButtonEnabled(true);
+		verify(actionBar).setRedoButtonEnabled(false);
+		verify(actionBar).invalidateOptionsMenu();
 	}
 
 	@Test
@@ -654,8 +610,9 @@ public class MainActivityPresenterTest {
 
 		presenter.finishInitialize();
 
-		verify(topBarViewHolder).disableUndoButton();
-		verify(topBarViewHolder).enableRedoButton();
+		verify(actionBar).setUndoButtonEnabled(false);
+		verify(actionBar).setRedoButtonEnabled(true);
+		verify(actionBar).invalidateOptionsMenu();
 	}
 
 	@Test
@@ -681,14 +638,14 @@ public class MainActivityPresenterTest {
 
 		presenter.finishInitialize();
 
-		verify(topBarViewHolder).setColorButtonColor(Color.RED);
+		verify(bottomNavigationViewHolder).setColorButtonColor(Color.RED);
 	}
 
 	@Test
 	public void testFinishInitializeWhenDefaultThenInitializeActionBarDefault() {
 		presenter.finishInitialize();
 
-		verify(view).initializeActionBar();
+		verify(actionBar).initialize();
 	}
 
 	@Test
@@ -740,8 +697,8 @@ public class MainActivityPresenterTest {
 	public void testOnLoadImagePreExecuteDoesNothing() {
 		presenter.onLoadImagePreExecute(LOAD_IMAGE_DEFAULT);
 
-		verifyZeroInteractions(view, model, navigator, interactor, topBarViewHolder, workspace, perspective,
-				drawerLayoutViewHolder, navigationDrawerViewHolder, commandFactory, commandManager, bottomBarViewHolder,
+		verifyZeroInteractions(view, model, navigator, interactor, actionBar, workspace, perspective,
+				drawerLayoutViewHolder, commandFactory, commandManager, bottomBarViewHolder,
 				toolController);
 	}
 

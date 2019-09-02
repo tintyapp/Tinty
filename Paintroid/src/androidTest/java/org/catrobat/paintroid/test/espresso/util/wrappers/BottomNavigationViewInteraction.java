@@ -40,22 +40,22 @@ public final class BottomNavigationViewInteraction extends CustomViewInteraction
 	}
 
 	public ViewInteraction onToolsClicked() {
-		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.action_tools))))
+		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.pocketpaint_action_tools))))
 				.perform(click());
 	}
 
 	public ViewInteraction onCurrentClicked() {
-		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.action_current_tool))))
+		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.pocketpaint_action_current_tool))))
 				.perform(click());
 	}
 
 	public ViewInteraction onColorClicked() {
-		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.action_color_picker))))
+		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.pocketpaint_action_color_picker))))
 				.perform(click());
 	}
 
 	public ViewInteraction onLayersClicked() {
-		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.action_layers))))
+		return onView(allOf(withId(R.id.icon), isDescendantOfA(withId(R.id.pocketpaint_action_layers))))
 				.perform(click());
 	}
 }

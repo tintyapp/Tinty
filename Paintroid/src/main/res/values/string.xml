@@ -26,19 +26,19 @@
     <string name="button_undo">Undo</string>
     <string name="button_redo">Redo</string>
     <string name="button_stamp">Stamp</string>
-    <string name="button_import_image">Import Image</string>
+    <string name="button_import_image">Import</string>
     <string name="button_eraser">Eraser</string>
     <string name="button_transform">Transform</string>
     <string name="button_fill">Fill</string>
     <string name="button_line">Line</string>
     <string name="button_text">Text</string>
     <string name="button_shape">Shapes</string>
-    <string name="button_layers">layers</string>
+    <string name="button_layers">Layers</string>
     <string name="button_hand">Hand</string>
     <string name="button_apply">Apply</string>
     <string name="done">Done</string>
 
-    <string name="cap_circle">Circle</string>
+    <string name="cap_circle">Round</string>
     <string name="cap_square">Square</string>
 
     <string name="dialog_error_save_title">Error load/save File</string>
@@ -64,17 +64,12 @@
     <string name="help_content_hand">Move your finger to move the canvas.</string>
     <string name="closing_security_question_title">Quit</string>
     <string name="closing_security_question">Save Changes?</string>
-    <string name="closing_catroid_security_question_title">Back to project</string>
-    <string name="menu_new_image">New image</string>
-    <string name="menu_discard_image">Discard image</string>
-    <string name="menu_load_image">Load image</string>
-    <string name="menu_save_image">Save image</string>
+    <string name="menu_new_image">New</string>
+    <string name="menu_load_image">Load</string>
+    <string name="menu_save_image">Save</string>
     <string name="menu_save_copy">Save copy</string>
     <string name="menu_hide_menu">Fullscreen</string>
-    <string name="menu_show_menu">Exit fullscreen</string>
     <string name="pocketpaint_menu_about">@string/pocketpaint_about_title</string>
-    <string name="menu_back">@string/closing_catroid_security_question_title</string>
-    <string name="menu_export">Export</string>
     <string name="saved">Image saved</string>
     <string name="copy">Copy saved</string>
     <string name="menu_quit">Quit</string>
@@ -145,8 +140,6 @@
     <string name="pocketpaint_about_url_catrobat_description">About Catrobat</string>
     <string name="pocketpaint_about_url_license" translatable="false">&lt;a href=\"http://developer.catrobat.org/licenses\"&gt;%s&lt;/a&gt;</string>
     <string name="pocketpaint_about_url_catrobat" translatable="false">&lt;a href=\"http://catrobat.org/\"&gt;%s&lt;/a&gt;</string>
-
-    <string name="pocketpaint_logo">Pocket Paint logo</string>
 
     <string name="pocketpaint_intro_split_screen_not_supported">Intro does not support split screen</string>
 

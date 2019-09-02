@@ -37,15 +37,15 @@ public final class TopBarViewInteraction extends CustomViewInteraction {
 	}
 
 	public ViewInteraction onUndoButton() {
-		return onView(withId(R.id.pocketpaint_btn_top_undo));
+		return onView(withId(R.id.pocketpaint_nav_undo));
 	}
 
 	public ViewInteraction onRedoButton() {
-		return onView(withId(R.id.pocketpaint_btn_top_redo));
+		return onView(withId(R.id.pocketpaint_nav_redo));
 	}
 
 	public ViewInteraction onPaletteButton() {
-		return onView(withId(R.id.pocketpaint_btn_top_color_palette));
+		return onView(withId(R.id.pocketpaint_action_color_picker));
 	}
 
 	public TopBarViewInteraction performUndo() {
@@ -56,6 +56,12 @@ public final class TopBarViewInteraction extends CustomViewInteraction {
 
 	public TopBarViewInteraction performRedo() {
 		onRedoButton()
+				.perform(click());
+		return this;
+	}
+
+	public TopBarViewInteraction onMoreOptionsClicked() {
+		onView(withId(R.id.pocketpaint_toolbar))
 				.perform(click());
 		return this;
 	}

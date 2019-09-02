@@ -97,7 +97,7 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 			@Override
 			public void colorChanged(int color) {
 				toolReference.get().changePaintColor(color);
-				mainActivity.getPresenter().setTopBarColor(color);
+				mainActivity.getPresenter().setColorButtonColor(color);
 			}
 		});
 	}

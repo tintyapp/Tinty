@@ -34,7 +34,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import org.catrobat.paintroid.BuildConfig;
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.R;
 import org.catrobat.paintroid.command.Command;
@@ -45,16 +44,15 @@ import org.catrobat.paintroid.common.MainActivityConstants.CreateFileRequestCode
 import org.catrobat.paintroid.common.MainActivityConstants.LoadImageRequestCode;
 import org.catrobat.paintroid.common.MainActivityConstants.PermissionRequestCode;
 import org.catrobat.paintroid.common.MainActivityConstants.SaveImageRequestCode;
+import org.catrobat.paintroid.contract.MainActivityContracts.ActionBarViewHolder;
 import org.catrobat.paintroid.contract.MainActivityContracts.BottomBarViewHolder;
 import org.catrobat.paintroid.contract.MainActivityContracts.BottomNavigationViewHolder;
 import org.catrobat.paintroid.contract.MainActivityContracts.DrawerLayoutViewHolder;
 import org.catrobat.paintroid.contract.MainActivityContracts.Interactor;
 import org.catrobat.paintroid.contract.MainActivityContracts.MainView;
 import org.catrobat.paintroid.contract.MainActivityContracts.Model;
-import org.catrobat.paintroid.contract.MainActivityContracts.NavigationDrawerViewHolder;
 import org.catrobat.paintroid.contract.MainActivityContracts.Navigator;
 import org.catrobat.paintroid.contract.MainActivityContracts.Presenter;
-import org.catrobat.paintroid.contract.MainActivityContracts.TopBarViewHolder;
 import org.catrobat.paintroid.controller.ToolController;
 import org.catrobat.paintroid.dialog.PermissionInfoDialog;
 import org.catrobat.paintroid.iotasks.CreateFileAsync.CreateFileCallback;
@@ -90,11 +88,10 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	private Workspace workspace;
 	private Navigator navigator;
 	private Interactor interactor;
-	private TopBarViewHolder topBarViewHolder;
+	private ActionBarViewHolder actionBar;
 	private Perspective perspective;
 	private BottomBarViewHolder bottomBarViewHolder;
 	private DrawerLayoutViewHolder drawerLayoutViewHolder;
-	private NavigationDrawerViewHolder navigationDrawerViewHolder;
 	private BottomNavigationViewHolder bottomNavigationViewHolder;
 
 	private CommandManager commandManager;
@@ -103,10 +100,9 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	private ToolController toolController;
 
 	public MainActivityPresenter(MainView view, Model model, Workspace workspace, Navigator navigator,
-			Interactor interactor, TopBarViewHolder topBarViewHolder, BottomBarViewHolder bottomBarViewHolder,
-			DrawerLayoutViewHolder drawerLayoutViewHolder, NavigationDrawerViewHolder navigationDrawerViewHolder,
-			BottomNavigationViewHolder bottomNavigationViewHolder, CommandFactory commandFactory,
-			CommandManager commandManager, Perspective perspective, ToolController toolController) {
+								Interactor interactor, ActionBarViewHolder actionBar, BottomBarViewHolder bottomBarViewHolder,
+								DrawerLayoutViewHolder drawerLayoutViewHolder, BottomNavigationViewHolder bottomNavigationViewHolder,
+								CommandFactory commandFactory, CommandManager commandManager, Perspective perspective, ToolController toolController) {
 		this.view = view;
 		this.model = model;
 		this.workspace = workspace;
@@ -114,9 +110,8 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 		this.interactor = interactor;
 		this.bottomBarViewHolder = bottomBarViewHolder;
 		this.drawerLayoutViewHolder = drawerLayoutViewHolder;
-		this.navigationDrawerViewHolder = navigationDrawerViewHolder;
 		this.commandManager = commandManager;
-		this.topBarViewHolder = topBarViewHolder;
+		this.actionBar = actionBar;
 		this.perspective = perspective;
 		this.toolController = toolController;
 		this.commandFactory = commandFactory;
@@ -201,11 +196,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	}
 
 	@Override
-	public void backToPocketCodeClicked() {
-		showSecurityQuestionBeforeExit();
-	}
-
-	@Override
 	public void showAboutClicked() {
 		navigator.showAboutDialog();
 	}
@@ -218,11 +208,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 		Command initCommand = commandFactory.createInitCommand(metrics.widthPixels, metrics.heightPixels);
 		commandManager.setInitialStateCommand(initCommand);
 		commandManager.reset();
-	}
-
-	@Override
-	public void discardImageClicked() {
-		commandManager.addCommand(commandFactory.createResetCommand());
 	}
 
 	private void askForWriteExternalStoragePermission(@PermissionRequestCode int requestCode) {
@@ -373,14 +358,14 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 		model.setSaved(false);
 		toolController.resetToolInternalState();
 		view.refreshDrawingSurface();
-		refreshTopBarButtons();
+		refreshActionBarButtons();
 
 		navigator.dismissIndeterminateProgressDialog();
 	}
 
 	@Override
-	public void setTopBarColor(int color) {
-		topBarViewHolder.setColorButtonColor(color);
+	public void setColorButtonColor(int color) {
+		bottomNavigationViewHolder.setColorButtonColor(color);
 	}
 
 	@Override
@@ -391,18 +376,15 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 
 	@Override
 	public void finishInitialize() {
-		refreshTopBarButtons();
-		topBarViewHolder.setColorButtonColor(toolController.getToolColor());
+		bottomNavigationViewHolder.setColorButtonColor(toolController.getToolColor());
+		actionBar.initialize();
+		refreshActionBarButtons();
 
 		if (model.isFullscreen()) {
 			enterFullscreen();
 		} else {
 			exitFullscreen();
 		}
-
-		navigationDrawerViewHolder.setVersion(BuildConfig.VERSION_NAME);
-
-		view.initializeActionBar();
 
 		if (commandManager.isBusy()) {
 			navigator.showIndeterminateProgressDialog();
@@ -411,10 +393,8 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 
 	private void exitFullscreen() {
 		view.exitFullscreen();
-		topBarViewHolder.show();
+		actionBar.show();
 		bottomNavigationViewHolder.show();
-		navigationDrawerViewHolder.hideExitFullscreen();
-		navigationDrawerViewHolder.showEnterFullscreen();
 		toolController.enableToolOptionsView();
 		perspective.exitFullscreen();
 	}
@@ -422,11 +402,9 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	private void enterFullscreen() {
 		view.hideKeyboard();
 		view.enterFullscreen();
-		topBarViewHolder.hide();
+		actionBar.hide();
 		bottomBarViewHolder.hide();
 		bottomNavigationViewHolder.hide();
-		navigationDrawerViewHolder.showExitFullscreen();
-		navigationDrawerViewHolder.hideEnterFullscreen();
 		toolController.disableToolOptionsView();
 		perspective.enterFullscreen();
 	}
@@ -451,17 +429,10 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 		toolController.createTool();
 	}
 
-	private void refreshTopBarButtons() {
-		if (commandManager.isUndoAvailable()) {
-			topBarViewHolder.enableUndoButton();
-		} else {
-			topBarViewHolder.disableUndoButton();
-		}
-		if (commandManager.isRedoAvailable()) {
-			topBarViewHolder.enableRedoButton();
-		} else {
-			topBarViewHolder.disableRedoButton();
-		}
+	private void refreshActionBarButtons() {
+		actionBar.setUndoButtonEnabled(commandManager.isUndoAvailable());
+		actionBar.setRedoButtonEnabled(commandManager.isRedoAvailable());
+		actionBar.invalidateOptionsMenu();
 	}
 
 	@Override
@@ -489,7 +460,7 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	private void setTool(ToolType toolType) {
 		bottomBarViewHolder.hide();
 
-		int offset = topBarViewHolder.getHeight();
+		int offset = actionBar.getHeight();
 		navigator.showToolChangeToast(offset, toolType.getNameResource());
 	}
 
