@@ -20,27 +20,34 @@
 package org.catrobat.paintroid.ui.viewholder;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.catrobat.paintroid.R;
 import org.catrobat.paintroid.contract.MainActivityContracts;
+import org.catrobat.paintroid.tools.ToolType;
+
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 
 public class BottomNavigationViewHolder implements MainActivityContracts.BottomNavigationViewHolder {
 	public final View layout;
 	private final BottomNavigationView bottomNavigationView;
 	private final BottomNavigationMenuView bottomNavigationMenuView;
+	private int orientation;
 
-	public BottomNavigationViewHolder(View layout) {
+	public BottomNavigationViewHolder(View layout, Context context) {
 		this.layout = layout;
 		this.bottomNavigationView = layout.findViewById(R.id.pocketpaint_bottom_navigation);
 		this.bottomNavigationMenuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+		this.orientation = context.getResources().getConfiguration().orientation;
 	}
 
 	@Override
@@ -51,6 +58,53 @@ public class BottomNavigationViewHolder implements MainActivityContracts.BottomN
 	@Override
 	public void hide() {
 		layout.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void setCurrentTool(ToolType toolType) {
+		if (orientation == SCREEN_ORIENTATION_PORTRAIT) {
+			Menu menu = bottomNavigationView.getMenu();
+			MenuItem currentTool = menu.findItem(R.id.pocketpaint_action_current_tool);
+			currentTool.setIcon(getImageResourceForToolType(toolType));
+			currentTool.setTitle(toolType.getNameResource());
+		} else {
+			View item = bottomNavigationMenuView.findViewById(R.id.pocketpaint_action_current_tool);
+			ImageView icon = item.findViewById(R.id.icon);
+			TextView title = item.findViewById(R.id.title);
+			icon.setImageResource(getImageResourceForToolType(toolType));
+			title.setText(toolType.getNameResource());
+		}
+	}
+
+	private @DrawableRes int getImageResourceForToolType(ToolType toolType) {
+		switch (toolType) {
+			case PIPETTE:
+				return R.drawable.ic_pocketpaint_tool_pipette;
+			case BRUSH:
+				return R.drawable.ic_pocketpaint_tool_brush;
+			case FILL:
+				return R.drawable.ic_pocketpaint_tool_fill;
+			case STAMP:
+				return R.drawable.ic_pocketpaint_tool_stamp;
+			case LINE:
+				return R.drawable.ic_pocketpaint_tool_line;
+			case CURSOR:
+				return R.drawable.ic_pocketpaint_tool_cursor;
+			case IMPORTPNG:
+				return R.drawable.ic_pocketpaint_tool_import;
+			case TRANSFORM:
+				return R.drawable.ic_pocketpaint_tool_transform;
+			case ERASER:
+				return R.drawable.ic_pocketpaint_tool_eraser;
+			case SHAPE:
+				return R.drawable.ic_pocketpaint_tool_rectangle;
+			case TEXT:
+				return R.drawable.ic_pocketpaint_tool_text;
+			case HAND:
+				return R.drawable.ic_pocketpaint_tool_hand;
+			default:
+				return 0;
+		}
 	}
 
 	@Override

@@ -242,6 +242,8 @@ public interface MainActivityContracts {
 
 		void hide();
 
+		void setCurrentTool(ToolType toolType);
+
 		void setColorButtonColor(int toolColor);
 	}
 }

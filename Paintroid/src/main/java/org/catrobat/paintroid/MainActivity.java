@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 		drawerLayoutViewHolder = new DrawerLayoutViewHolder(drawerLayout);
 		actionBarViewHolder = new ActionBarViewHolder(this, topBarLayout);
 		BottomBarViewHolder bottomBarViewHolder = new BottomBarViewHolder(bottomBarLayout);
-		BottomNavigationViewHolder bottomNavigationViewHolder = new BottomNavigationViewHolder(bottomNavigationView);
+		BottomNavigationViewHolder bottomNavigationViewHolder = new BottomNavigationViewHolder(bottomNavigationView, getApplicationContext());
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			bottomNavigationViewHolder.setLandscapeStyle(context);
