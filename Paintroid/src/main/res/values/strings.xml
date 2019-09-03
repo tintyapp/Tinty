@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?><!--
+ *  Paintroid: An image manipulation application for Android.
+ *  Copyright (C) 2010-2015 The Catrobat Team
+ *  (<http://developer.catrobat.org/credits>)
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="pocketpaint_app_name">Tinty</string>
+    <string name="button_brush">Brush</string>
+    <string name="button_cursor">Cursor</string>
+    <string name="button_pipette">Pipette</string>
+    <string name="button_undo">Undo</string>
+    <string name="button_redo">Redo</string>
+    <string name="button_stamp">Stamp</string>
+    <string name="button_import_image">Import</string>
+    <string name="button_eraser">Eraser</string>
+    <string name="button_transform">Transform</string>
+    <string name="button_fill">Fill</string>
+    <string name="button_line">Line</string>
+    <string name="button_text">Text</string>
+    <string name="button_shape">Shapes</string>
+    <string name="button_hand">Hand</string>
+    <string name="button_apply">Apply</string>
+    <string name="done">Done</string>
+
+    <string name="cap_circle">Round</string>
+    <string name="cap_square">Square</string>
+
+    <string name="dialog_error_save_title">Error load/save File</string>
+    <string name="dialog_error_sdcard_text">Check Image or SD-Card!</string>
+    <string name="dialog_brush_width_text">Stroke Width</string>
+    <string name="dialog_warning_new_image">Save Changes?</string>
+    <string name="help_title">Help</string>
+    <string name="closing_security_question_title">Quit</string>
+    <string name="closing_security_question">Save Changes?</string>
+    <string name="menu_new_image">New</string>
+    <string name="menu_load_image">Load</string>
+    <string name="menu_save_image">Save</string>
+    <string name="menu_save_copy">Save copy</string>
+    <string name="menu_hide_menu">Fullscreen</string>
+    <string name="pocketpaint_menu_about">@string/pocketpaint_about_title</string>
+    <string name="saved">Image saved</string>
+    <string name="copy">Copy saved</string>
+    <string name="menu_quit">Quit</string>
+    <string name="save_button_text">Save</string>
+    <string name="discard_button_text">Discard</string>
+
+    <string name="resize_nothing_to_resize">nothing to resize</string>
+    <string name="resize_cannot_resize_to_this_size">cannot resize to this size</string>
+    <string name="resize_max_image_resolution_reached">max image resolution reached</string>
+
+    <string name="text_tool_dialog_input_title">Your text:</string>
+    <string name="text_tool_dialog_format_options">Format options:</string>
+    <string name="text_tool_dialog_underline_shortcut" translatable="false">U</string>
+    <string name="text_tool_dialog_italic_shortcut" translatable="false">I</string>
+    <string name="text_tool_dialog_bold_shortcut" translatable="false">B</string>
+    <string name="text_tool_dialog_input_hint">Tap here to write</string>
+    <string name="text_tool_dialog_font_monospace" translatable="false">Monospace</string>
+    <string name="text_tool_dialog_font_serif" translatable="false">Serif</string>
+    <string name="text_tool_dialog_font_sans_serif" translatable="false">Sans Serif</string>
+    <string name="text_tool_dialog_font_dubai" translatable="false">Dubai</string>
+    <string name="text_tool_dialog_font_arabic_stc" translatable="false">STC</string>
+
+    <string name="shape_tool_dialog_rect_title">Rectangle</string>
+    <string name="shape_tool_dialog_ellipse_title">Ellipse</string>
+    <string name="shape_tool_dialog_star_title">Star</string>
+    <string name="shape_tool_dialog_heart_title">Heart</string>
+    <string name="shape_tool_dialog_fill_title">Fill</string>
+    <string name="shape_tool_dialog_outline_title">Outline</string>
+
+    <string name="fill_tool_dialog_color_tolerance_title">Color tolerance</string>
+
+    <string name="transform_tool_rotate_left">rotate left</string>
+    <string name="transform_tool_rotate_right">rotate right</string>
+    <string name="transform_tool_flip_vertical">flip vertical</string>
+    <string name="transform_tool_flip_horizontal">flip horizontal</string>
+    <string name="transform_tool_resize_text">resize</string>
+    <string name="transform_tool_auto_crop_text">crop/enlarge</string>
+    <string name="transform_width_text">Width</string>
+    <string name="transform_height_text">Height</string>
+    <string name="pixel">px</string>
+
+    <string name="stamp_tool_copy_hint">Long press to copy content</string>
+
+    <string name="layer_new">New Layer</string>
+    <string name="layer_delete">Delete Layer</string>
+    <string name="layer_too_many_layers">Too many layers</string>
+    <string name="layer_merged">Layers merged</string>
+    <string name="layer_background">Layer background</string>
+
+    <string name="dialog_shape_text">Shape</string>
+    <string name="dialog_loading_image_failed_title">Error on loading image</string>
+    <string name="dialog_loading_image_failed_text">Not a valid image file</string>
+
+    <string name="permission_info_external_storage_text">This app needs the requested permission to function properly. In order to save files to the local memory, the app needs read and write access to it. You can always change permissions through your device\'s settings.</string>
+
+    <string name="drawer_open" tools:ignore="UnusedResources">Open navigation drawer</string>
+    <string name="drawer_close" tools:ignore="UnusedResources">Close navigation drawer</string>
+    <string name="transform_info_text">Drag edges to their new position, then tap to enlarge or crop the image area.</string>
+    <string name="cursor_draw_inactive">Pan to position, then tap to start painting.</string>
+    <string name="cursor_draw_active">Pan to draw, then tap again to stop painting.</string>
+
+    <string name="pocketpaint_about_title">About</string>
+    <string name="pocketpaint_about_version">Version %s</string>
+    <string name="pocketpaint_about_license">GNU Affero General Public License, v3</string>
+    <string name="pocketpaint_about_content">Tinty is a drawing and image editing app.\n\nThe source code of Tinty is mainly licensed under the %s.\nFor precise details of the license see the link below.</string>
+    <string name="pocketpaint_about_url_license_description">Tinty Source Code License</string>
+    <string name="pocketpaint_about_url_catrobat_description">About Catrobat</string>
+    <string name="pocketpaint_about_url_license" translatable="false">&lt;a href=\"http://developer.catrobat.org/licenses\"&gt;%s&lt;/a&gt;</string>
+    <string name="pocketpaint_about_url_catrobat" translatable="false">&lt;a href=\"http://catrobat.org/\"&gt;%s&lt;/a&gt;</string>
+
+    <string name="pocketpaint_intro_split_screen_not_supported">Intro does not support split screen</string>
+
+    <string name="bottom_navigation_tools">Tools</string>
+    <string name="bottom_navigation_current">Current</string>
+    <string name="bottom_navigation_color">Color</string>
+    <string name="bottom_navigation_layers">Layers</string>
+    <string name="bottom_navigation_item">Item for Bottom Navigation</string>
+</resources>

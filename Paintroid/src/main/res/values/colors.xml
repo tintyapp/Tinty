@@ -20,14 +20,12 @@
 -->
 <resources>
     <!-- PocketPaint theme colors -->
-    <color name="pocketpaint_colorPrimary">#0097A7</color>
-    <color name="pocketpaint_colorPrimaryDark">#00838F</color>
-    <color name="pocketpaint_colorAccent">#33B5E5</color>
-    <color name="pocketpaint_text_color_link">#E68B00</color>
+    <color name="pocketpaint_colorPrimary">#3f51b5</color>
+    <color name="pocketpaint_colorPrimaryDark">#002984</color>
+    <color name="pocketpaint_colorAccent">#ec407a</color>
 
     <!-- PocketPaint main activity -->
-    <color name="pocketpaint_main_separator_color">#c8e8ff</color>
-    <color name="pocketpaint_main_bottom_bar_selected">#007A99</color>
+    <color name="pocketpaint_main_bottom_bar_selected">?colorPrimary</color>
     <color name="pocketpaint_main_drawing_surface_active">#00000000</color>
     <color name="pocketpaint_main_drawing_surface_inactive">#80000000</color>
     <color name="pocketpaint_main_drawing_surface_background">#D3D3D3</color>
@@ -35,5 +33,4 @@
     <color name="pocketpaint_main_rectangle_tool_accent_color">#33B5E5</color>
     <color name="pocketpaint_main_rectangle_tool_highlight_color">#e56b33</color>
     <color name="pocketpaint_main_cursor_tool_inactive_primary_color">#555555</color>
-    <color name="pocketpaint_main_navigation_drawer_background">@android:color/white</color>
 </resources>

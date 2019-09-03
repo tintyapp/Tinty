@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -18,6 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -32,7 +32,7 @@
             style="@style/PocketPaintToolSubtitle"
             android:text="@string/transform_tool_auto_crop_text" />
 
-        <View style="@style/PocketPaintToolSectionDivider"/>
+        <View style="@style/PocketPaintToolSectionDivider" />
 
         <LinearLayout style="@style/PocketPaintToolSection">
 
@@ -41,9 +41,9 @@
                 style="?android:borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_pocketpaint_tool_resize_adjust"
+                android:contentDescription="@string/transform_tool_auto_crop_text"
                 android:theme="@style/PocketPaintHighlightColorTheme"
-                android:contentDescription="@string/transform_tool_auto_crop_text" />
+                app:srcCompat="@drawable/ic_pocketpaint_tool_resize_adjust" />
 
             <Space style="@style/PocketPaintToolHorizontalSpace" />
 
@@ -62,7 +62,6 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:textAlignment="textEnd"
-                android:textColor="@color/pocketpaint_colorAccent"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 tools:text="100" />
@@ -70,10 +69,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="@string/pixel" />
+                android:text="@string/pixel"
+                android:textSize="14sp" />
 
-            <Space style="@style/PocketPaintToolHorizontalSpace"
+            <Space
+                style="@style/PocketPaintToolHorizontalSpace"
                 android:layout_width="16dp" />
 
             <TextView
@@ -91,7 +91,6 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:textAlignment="textEnd"
-                android:textColor="@color/pocketpaint_colorAccent"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 tools:text="100" />
@@ -99,8 +98,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="@string/pixel" />
+                android:text="@string/pixel"
+                android:textSize="14sp" />
 
             <Space style="@style/PocketPaintToolHorizontalSpace" />
         </LinearLayout>
@@ -109,40 +108,40 @@
             style="@style/PocketPaintToolSubtitle"
             android:text="@string/transform_tool_resize_text" />
 
-        <View style="@style/PocketPaintToolSectionDivider"/>
+        <View style="@style/PocketPaintToolSectionDivider" />
 
         <LinearLayout style="@style/PocketPaintToolSection">
+
             <SeekBar
                 android:id="@+id/pocketpaint_transform_resize_seekbar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:max="100"
-                android:progress="100"
-                android:minHeight="30dip" />
+                android:minHeight="30dip"
+                android:progress="100" />
 
             <TextView
                 android:id="@+id/pocketpaint_transform_resize_percentage_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="end"
                 android:saveEnabled="false"
-                android:textColor="@color/pocketpaint_colorAccent"
+                android:text="100"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:gravity="end"
-                android:text="100"
                 tools:ignore="HardCodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="%"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@color/pocketpaint_colorAccent"
-                android:text="%"
-                tools:ignore="HardcodedText"/>
+                tools:ignore="HardcodedText" />
 
-            <Space style="@style/PocketPaintToolHorizontalSpace"
+            <Space
+                style="@style/PocketPaintToolHorizontalSpace"
                 android:layout_width="16dp" />
 
             <Button
@@ -156,18 +155,19 @@
             style="@style/PocketPaintToolSubtitle"
             android:text="@string/button_transform" />
 
-        <View style="@style/PocketPaintToolSectionDivider"/>
+        <View style="@style/PocketPaintToolSectionDivider" />
 
         <LinearLayout style="@style/PocketPaintToolSection">
+
             <ImageButton
                 android:id="@+id/pocketpaint_transform_rotate_left_btn"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_pocketpaint_tool_rotate_left"
+                android:contentDescription="@string/transform_tool_rotate_left"
                 android:theme="@style/PocketPaintHighlightColorTheme"
-                android:contentDescription="@string/transform_tool_rotate_left" />
+                app:srcCompat="@drawable/ic_pocketpaint_rotate_left" />
 
             <ImageButton
                 android:id="@+id/pocketpaint_transform_rotate_right_btn"
@@ -175,9 +175,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_pocketpaint_rotate_right"
+                android:contentDescription="@string/transform_tool_rotate_right"
                 android:theme="@style/PocketPaintHighlightColorTheme"
-                android:contentDescription="@string/transform_tool_rotate_right" />
+                app:srcCompat="@drawable/ic_pocketpaint_rotate_right" />
 
             <ImageButton
                 android:id="@+id/pocketpaint_transform_flip_vertical_btn"
@@ -185,9 +185,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_pocketpaint_tool_flip_vertical"
+                android:contentDescription="@string/transform_tool_flip_vertical"
                 android:theme="@style/PocketPaintHighlightColorTheme"
-                android:contentDescription="@string/transform_tool_flip_vertical" />
+                app:srcCompat="@drawable/ic_pocketpaint_tool_flip_vertical" />
 
             <ImageButton
                 android:id="@+id/pocketpaint_transform_flip_horizontal_btn"
@@ -195,9 +195,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_pocketpaint_tool_flip_horizontal"
+                android:contentDescription="@string/transform_tool_flip_horizontal"
                 android:theme="@style/PocketPaintHighlightColorTheme"
-                android:contentDescription="@string/transform_tool_flip_horizontal" />
+                app:srcCompat="@drawable/ic_pocketpaint_tool_flip_horizontal" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -26,7 +26,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
-        classpath 'com.novoda:bintray-release:0.8.1'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.4'
         classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.4.0'
     }

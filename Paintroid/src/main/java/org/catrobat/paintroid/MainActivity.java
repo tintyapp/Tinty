@@ -29,6 +29,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -252,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	private void onCreateMainView() {
 		Context context = getApplicationContext();
 		DrawerLayout drawerLayout = findViewById(R.id.pocketpaint_drawer_layout);
-		ViewGroup topBarLayout = findViewById(R.id.pocketpaint_layout_top_bar);
+		AppBarLayout topBarLayout = findViewById(R.id.pocketpaint_layout_top_bar);
 		View bottomBarLayout = findViewById(R.id.pocketpaint_main_bottom_bar);
 		View bottomNavigationView = findViewById(R.id.pocketpaint_main_bottom_navigation);
 

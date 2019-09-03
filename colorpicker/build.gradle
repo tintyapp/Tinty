@@ -18,7 +18,7 @@
  */
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply from: '../gradle/code_quality_tasks.gradle'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
@@ -37,19 +37,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-publish {
-    userOrg = 'catrobat'
-    repoName = 'Paintroid'
-    groupId = 'org.catrobat.paintroid'
-    artifactId = 'colorpicker'
-    publishVersion = rootProject.ext.androidVersionName
-    licences = ['AGPL-V3']
-    desc = 'A simple color picker for Android'
-    website = 'https://github.com/Catrobat/Paintroid'
-    issueTracker = 'https://jira.catrob.at/browse/PAINTROID'
-    repository = "${website}.git"
 }
 
 dependencies {

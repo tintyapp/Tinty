@@ -65,7 +65,7 @@ public class PermissionInfoDialog extends AppCompatDialogFragment {
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		return new AlertDialog.Builder(getContext(), R.style.PocketPaintAlertDialog)
+		return new AlertDialog.Builder(getContext())
 				.setIcon(permissionType.getIconResource())
 				.setMessage(permissionType.getMessageResource())
 				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {

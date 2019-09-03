@@ -30,7 +30,6 @@ import android.view.Gravity;
 
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.R;
-import org.catrobat.paintroid.common.Constants;
 import org.catrobat.paintroid.test.espresso.util.DrawingSurfaceLocationProvider;
 import org.catrobat.paintroid.tools.ToolReference;
 import org.catrobat.paintroid.tools.ToolType;
@@ -135,7 +134,7 @@ public class ToolOnBackPressedIntegrationTest {
 	public void testBrushToolBackPressedWithSaveAndOverride() {
 		String pathToFile = launchActivityRule.getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
 				+ File.separator
-				+ Constants.TEMP_PICTURE_NAME
+				+ "catroidTemp"
 				+ FILE_ENDING;
 
 		saveFile = new File(pathToFile);

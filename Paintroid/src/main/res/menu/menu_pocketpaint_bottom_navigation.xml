@@ -20,7 +20,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/pocketpaint_action_tools"
-        android:icon="@drawable/ic_pocketpaint_tool_hand"
+        android:icon="@drawable/pocketpaint_logo_small_outline"
         android:title="@string/bottom_navigation_tools" />
 
     <item

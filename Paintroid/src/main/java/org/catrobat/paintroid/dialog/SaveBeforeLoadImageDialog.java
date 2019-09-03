@@ -35,7 +35,7 @@ public class SaveBeforeLoadImageDialog extends MainActivityDialogFragment {
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		return new AlertDialog.Builder(getActivity(), R.style.PocketPaintAlertDialog)
+		return new AlertDialog.Builder(getActivity())
 				.setTitle(R.string.menu_load_image)
 				.setMessage(R.string.dialog_warning_new_image)
 				.setPositiveButton(R.string.save_button_text, new DialogInterface.OnClickListener() {

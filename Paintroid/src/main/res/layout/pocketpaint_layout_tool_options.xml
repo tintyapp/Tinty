@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -28,12 +27,11 @@
     <TextView
         android:id="@+id/pocketpaint_layout_tool_options_name"
         style="@style/PocketPaintToolTitle"
-        tools:text="Tool name"/>
+        tools:text="Tool name" />
 
     <LinearLayout
         android:id="@+id/pocketpaint_layout_tool_specific_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:orientation="vertical" />
 </LinearLayout>
