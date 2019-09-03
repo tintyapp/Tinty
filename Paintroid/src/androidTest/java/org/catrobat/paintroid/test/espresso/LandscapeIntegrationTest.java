@@ -96,12 +96,7 @@ public class LandscapeIntegrationTest {
 	@Test
 	public void testTools() {
 		for (ToolType toolType : ToolType.values()) {
-			if (toolType == ToolType.IMPORTPNG
-					|| toolType == ToolType.COLORCHOOSER
-					|| toolType == ToolType.REDO
-					|| toolType == ToolType.UNDO
-					|| toolType == ToolType.LAYER
-					|| !toolType.hasOptions()) {
+			if (!toolType.hasOptions()) {
 				continue;
 			}
 
@@ -129,14 +124,6 @@ public class LandscapeIntegrationTest {
 	@Test
 	public void testCorrectSelectionInBothOrientations() {
 		for (ToolType toolType : ToolType.values()) {
-			if (toolType == ToolType.IMPORTPNG
-					|| toolType == ToolType.COLORCHOOSER
-					|| toolType == ToolType.REDO
-					|| toolType == ToolType.UNDO
-					|| toolType == ToolType.LAYER) {
-				continue;
-			}
-
 			onToolBarView()
 					.performSelectTool(toolType);
 

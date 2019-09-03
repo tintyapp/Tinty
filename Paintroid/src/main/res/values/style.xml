@@ -19,18 +19,7 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="PocketPaintTitleTextStyle">
-    <item name="android:textColor">@color/pocketpaint_colorAccent</item>
-    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
-    </style>
-
-    <style name="PocketPaintAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowTitleStyle">@style/PocketPaintTitleTextStyle</item>
-        <item name="android:textColorLink">@color/pocketpaint_text_color_link</item>
-        <item name="colorAccent">@color/pocketpaint_colorAccent</item>
-    </style>
-
-    <style name="PocketPaintProgressDialog" parent="PocketPaintAlertDialog">
+    <style name="PocketPaintProgressDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="windowNoTitle">true</item>
         <item name="android:windowMinWidthMajor">0%</item>
         <item name="android:windowMinWidthMinor">0%</item>
@@ -44,19 +33,15 @@
 
     <style name="PocketPaintTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/pocketpaint_colorPrimary</item>
-        <item name="dialogTheme">@style/PocketPaintAlertDialog</item>
         <item name="colorPrimary">@color/pocketpaint_colorPrimary</item>
         <item name="colorPrimaryDark">@color/pocketpaint_colorPrimaryDark</item>
         <item name="colorAccent">@color/pocketpaint_colorAccent</item>
         <item name="actionBarStyle">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="PocketPaintHighlightColorTheme" parent="PocketPaintTheme">
         <item name="colorControlHighlight">@color/pocketpaint_main_bottom_bar_selected</item>
-    </style>
-
-    <style name="PocketPaintDividerBase">
-        <item name="android:background">@color/pocketpaint_main_separator_color</item>
     </style>
 
     <style name="PocketPaintSelectableButton" parent="Base.Widget.AppCompat.Button.Borderless">
@@ -76,14 +61,13 @@
     <style name="PocketPaintToolSelectionButtonImageView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:tint">@android:color/black</item>
+        <item name="android:tint">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="PocketPaintToolSelectionButtonTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="PocketPaintToolTitle" parent="PocketPaintToolSubtitle">
@@ -100,11 +84,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/pocketpaint_colorAccent</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="PocketPaintToolSectionDivider" parent="PocketPaintDividerBase">
+    <style name="PocketPaintToolSectionDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">2dp</item>
         <item name="android:layout_marginEnd">16dp</item>

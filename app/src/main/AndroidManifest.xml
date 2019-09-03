@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -19,17 +18,15 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.catrobat.paintroid.app">
+    package="org.catrobat.paintroid.tintyapp">
 
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="${appName}"
-        android:extractNativeLibs="false"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
-        <activity
-            android:name="org.catrobat.paintroid.MainActivity">
+        <activity android:name="org.catrobat.paintroid.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

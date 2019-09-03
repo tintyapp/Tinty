@@ -21,4 +21,8 @@ package org.catrobat.paintroid.colorpicker;
 
 public final class Constants {
 	public static final int NOT_A_HEX_VALUE = 20000000;
+
+	private Constants() {
+		throw new IllegalArgumentException();
+	}
 }

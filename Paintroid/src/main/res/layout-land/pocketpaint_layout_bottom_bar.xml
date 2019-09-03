@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -19,6 +18,7 @@
 -->
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -28,161 +28,187 @@
     <TableRow
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp">
+
         <LinearLayout
             android:id="@+id/pocketpaint_tools_brush"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_brush"
-                android:contentDescription="@string/button_brush"/>
+                android:contentDescription="@string/button_brush"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_brush" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_brush"/>
+                android:text="@string/button_brush" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_hand"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_hand"
-                android:contentDescription="@string/button_hand"/>
+                android:contentDescription="@string/button_hand"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_hand" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_hand"/>
+                android:text="@string/button_hand" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_eraser"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_eraser"
-                android:contentDescription="@string/button_eraser"/>
+                android:contentDescription="@string/button_eraser"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_eraser" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_eraser"/>
+                android:text="@string/button_eraser" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_line"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_line"
-                android:contentDescription="@string/button_line"/>
+                android:contentDescription="@string/button_line"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_line" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_line"/>
+                android:text="@string/button_line" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_rectangle"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_rectangle"
-                android:contentDescription="@string/button_shape"/>
+                android:contentDescription="@string/button_shape"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_rectangle" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_shape"/>
+                android:text="@string/button_shape" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_fill"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_fill"
-                android:contentDescription="@string/button_fill"/>
+                android:contentDescription="@string/button_fill"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_fill" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_fill"/>
+                android:text="@string/button_fill" />
         </LinearLayout>
     </TableRow>
 
     <TableRow
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp">
+
         <LinearLayout
             android:id="@+id/pocketpaint_tools_pipette"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_pipette"
-                android:contentDescription="@string/button_pipette"/>
+                android:contentDescription="@string/button_pipette"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_pipette" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_pipette"/>
+                android:text="@string/button_pipette" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_cursor"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_cursor"
-                android:contentDescription="@string/button_cursor"/>
+                android:contentDescription="@string/button_cursor"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_cursor" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_cursor"/>
+                android:text="@string/button_cursor" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_text"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_text"
-                android:contentDescription="@string/button_text"/>
+                android:contentDescription="@string/button_text"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_text" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_text"/>
+                android:text="@string/button_text" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_stamp"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_stamp"
-                android:contentDescription="@string/button_stamp"/>
+                android:contentDescription="@string/button_stamp"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_stamp" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_stamp"/>
+                android:text="@string/button_stamp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_transform"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_transform"
-                android:contentDescription="@string/button_transform"/>
+                android:contentDescription="@string/button_transform"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_transform" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
-                android:text="@string/button_transform"/>
+                android:text="@string/button_transform" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pocketpaint_tools_import"
-            tools:ignore="UseCompoundDrawables"
-            style="@style/PocketPaintToolSelectionButton">
+            style="@style/PocketPaintToolSelectionButton"
+            tools:ignore="UseCompoundDrawables">
+
             <ImageView
                 style="@style/PocketPaintToolSelectionButtonImageView"
-                android:src="@drawable/ic_pocketpaint_tool_import"
-                android:contentDescription="@string/button_import_image"/>
+                android:contentDescription="@string/button_import_image"
+                app:srcCompat="@drawable/ic_pocketpaint_tool_import" />
+
             <TextView
                 style="@style/PocketPaintToolSelectionButtonTextView"
                 android:text="@string/button_import_image" />

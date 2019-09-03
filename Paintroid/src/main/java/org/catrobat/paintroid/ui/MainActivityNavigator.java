@@ -121,7 +121,7 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 	@Override
 	public void showAboutDialog() {
 		AboutDialog about = AboutDialog.newInstance();
-		about.show(mainActivity.getSupportFragmentManager(), Constants.ABOUT_DIALOG_FRAGMENT_TAG);
+		showFragmentSafely(about, Constants.ABOUT_DIALOG_FRAGMENT_TAG);
 	}
 
 	@Override
@@ -147,14 +147,14 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 
 	@Override
 	public void showSaveErrorDialog() {
-		AppCompatDialogFragment dialog = InfoDialog.newInstance(InfoDialog.DialogType.WARNING,
+		AppCompatDialogFragment dialog = InfoDialog.newInstance(
 				R.string.dialog_error_sdcard_text, R.string.dialog_error_save_title);
 		showDialogFragmentSafely(dialog, Constants.SAVE_DIALOG_FRAGMENT_TAG);
 	}
 
 	@Override
 	public void showLoadErrorDialog() {
-		AppCompatDialogFragment dialog = InfoDialog.newInstance(InfoDialog.DialogType.WARNING,
+		AppCompatDialogFragment dialog = InfoDialog.newInstance(
 				R.string.dialog_loading_image_failed_title, R.string.dialog_loading_image_failed_text);
 		showDialogFragmentSafely(dialog, Constants.LOAD_DIALOG_FRAGMENT_TAG);
 	}

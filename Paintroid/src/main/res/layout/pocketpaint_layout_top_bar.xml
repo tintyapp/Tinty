@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -18,19 +17,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pocketpaint_layout_top_bar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:theme="?attr/actionBarStyle"
-    tools:showIn="@layout/activity_pocketpaint_main"
-    android:orientation="horizontal">
+    tools:showIn="@layout/activity_pocketpaint_main">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/pocketpaint_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-</LinearLayout>
+</android.support.design.widget.AppBarLayout>

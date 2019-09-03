@@ -84,8 +84,7 @@
                     android:id="@+id/pocketpaint_main_bottom_navigation"
                     layout="@layout/pocketpaint_layout_bottom_navigation"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/pocketpaint_main_bottom_bar_height"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>

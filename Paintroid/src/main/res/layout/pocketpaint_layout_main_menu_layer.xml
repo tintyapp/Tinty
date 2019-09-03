@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -18,6 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pocketpaint_layer_side_nav_menu"
     android:layout_width="wrap_content"
@@ -29,10 +29,7 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/layer_new"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_pocketpaint_layers_add_selector"
-        android:theme="@style/PocketPaintHighlightColorTheme" />
+        app:srcCompat="@drawable/ic_pocketpaint_layers_add_selector" />
 
     <ImageButton
         android:id="@+id/pocketpaint_layer_side_nav_button_delete"
@@ -41,16 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/pocketpaint_layer_side_nav_button_add"
         android:contentDescription="@string/layer_delete"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_pocketpaint_layers_delete_selector"
-        android:theme="@style/PocketPaintHighlightColorTheme" />
+        app:srcCompat="@drawable/ic_pocketpaint_layers_delete_selector" />
 
     <org.catrobat.paintroid.ui.dragndrop.DragAndDropListView
         android:id="@+id/pocketpaint_layer_side_nav_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/pocketpaint_layer_side_nav_button_add"
-        android:splitMotionEvents="false"
+        android:layout_centerInParent="true"
         tools:listitem="@layout/pocketpaint_item_layer" />
 </RelativeLayout>

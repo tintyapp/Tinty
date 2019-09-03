@@ -22,7 +22,6 @@ package org.catrobat.paintroid.dialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
@@ -33,14 +32,12 @@ import org.catrobat.paintroid.R;
 public class InfoDialog extends AppCompatDialogFragment implements
 		DialogInterface.OnClickListener {
 
-	public static final String DRAWABLE_RESOURCE_KEY = "drawableResource";
 	public static final String MESSAGE_RESOURCE_KEY = "messageResource";
 	public static final String TITLE_RESOURCE_KEY = "titleResource";
 
-	public static InfoDialog newInstance(DialogType dialogType, @StringRes int messageResource, @StringRes int titleResource) {
+	public static InfoDialog newInstance(@StringRes int messageResource, @StringRes int titleResource) {
 		InfoDialog infoDialog = new InfoDialog();
 		Bundle bundle = new Bundle();
-		bundle.putInt(DRAWABLE_RESOURCE_KEY, dialogType.getImageResource());
 		bundle.putInt(MESSAGE_RESOURCE_KEY, messageResource);
 		bundle.putInt(TITLE_RESOURCE_KEY, titleResource);
 		infoDialog.setArguments(bundle);
@@ -50,12 +47,12 @@ public class InfoDialog extends AppCompatDialogFragment implements
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.PocketPaintAlertDialog);
+		AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
 		Bundle arguments = getArguments();
 		if (arguments != null) {
 			builder.setTitle(arguments.getInt(TITLE_RESOURCE_KEY))
-					.setIcon(arguments.getInt(DRAWABLE_RESOURCE_KEY))
+					.setIcon(R.drawable.ic_pocketpaint_dialog_warning)
 					.setMessage(arguments.getInt(MESSAGE_RESOURCE_KEY));
 		}
 
@@ -66,20 +63,5 @@ public class InfoDialog extends AppCompatDialogFragment implements
 	@Override
 	public void onClick(DialogInterface dialog, int which) {
 		dialog.cancel();
-	}
-
-	public enum DialogType {
-		INFO(R.drawable.ic_pocketpaint_dialog_info),
-		WARNING(R.drawable.ic_pocketpaint_dialog_warning);
-
-		private int imageResource;
-
-		DialogType(@DrawableRes int imageResource) {
-			this.imageResource = imageResource;
-		}
-
-		public @DrawableRes int getImageResource() {
-			return imageResource;
-		}
 	}
 }

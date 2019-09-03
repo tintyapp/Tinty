@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  *  Paintroid: An image manipulation application for Android.
  *  Copyright (C) 2010-2015 The Catrobat Team
  *  (<http://developer.catrobat.org/credits>)
@@ -18,28 +17,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.catrobat.paintroid"
-    android:installLocation="auto">
+    package="org.catrobat.paintroid">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application
-        android:largeHeap="true"
-        android:supportsRtl="true">
-
+    <application android:supportsRtl="true">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/PocketPaintSplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.GET_CONTENT" />
-
-                <category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
-                <category android:name="android.intent.category.ALTERNATIVE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="image/*" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/PocketPaintSplashTheme" />
     </application>
-
 </manifest>

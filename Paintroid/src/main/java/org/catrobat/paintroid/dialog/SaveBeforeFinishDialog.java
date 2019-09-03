@@ -53,7 +53,7 @@ public class SaveBeforeFinishDialog extends MainActivityDialogFragment {
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		return new AlertDialog.Builder(getActivity(), R.style.PocketPaintAlertDialog)
+		return new AlertDialog.Builder(getActivity())
 				.setTitle(dialogType.getTitleResource())
 				.setMessage(dialogType.getMessageResource())
 				.setPositiveButton(R.string.save_button_text, new DialogInterface.OnClickListener() {
