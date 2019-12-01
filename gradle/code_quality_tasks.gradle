@@ -17,7 +17,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-apply plugin: 'jacoco-android'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 
@@ -57,17 +56,6 @@ task pmd(type: Pmd) {
 
 check.dependsOn 'checkstyle'
 check.dependsOn 'pmd'
-
-jacoco {
-    toolVersion = "0.8.1"
-}
-
-jacocoAndroidUnitTestReport {
-    csv.enabled false
-    html.enabled true
-    xml.enabled true
-}
-
 
 android {
     lintOptions {
