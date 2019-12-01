@@ -60,7 +60,6 @@ import org.catrobat.paintroid.iotasks.LoadImageAsync.LoadImageCallback;
 import org.catrobat.paintroid.iotasks.SaveImageAsync.SaveImageCallback;
 import org.catrobat.paintroid.tools.ToolType;
 import org.catrobat.paintroid.tools.Workspace;
-import org.catrobat.paintroid.ui.Perspective;
 
 import java.io.File;
 
@@ -89,7 +88,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	private Navigator navigator;
 	private Interactor interactor;
 	private ActionBarViewHolder actionBar;
-	private Perspective perspective;
 	private BottomBarViewHolder bottomBarViewHolder;
 	private DrawerLayoutViewHolder drawerLayoutViewHolder;
 	private BottomNavigationViewHolder bottomNavigationViewHolder;
@@ -102,7 +100,7 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	public MainActivityPresenter(MainView view, Model model, Workspace workspace, Navigator navigator,
 								Interactor interactor, ActionBarViewHolder actionBar, BottomBarViewHolder bottomBarViewHolder,
 								DrawerLayoutViewHolder drawerLayoutViewHolder, BottomNavigationViewHolder bottomNavigationViewHolder,
-								CommandFactory commandFactory, CommandManager commandManager, Perspective perspective, ToolController toolController) {
+								CommandFactory commandFactory, CommandManager commandManager, ToolController toolController) {
 		this.view = view;
 		this.model = model;
 		this.workspace = workspace;
@@ -112,7 +110,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 		this.drawerLayoutViewHolder = drawerLayoutViewHolder;
 		this.commandManager = commandManager;
 		this.actionBar = actionBar;
-		this.perspective = perspective;
 		this.toolController = toolController;
 		this.commandFactory = commandFactory;
 		this.bottomNavigationViewHolder = bottomNavigationViewHolder;
@@ -181,18 +178,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 	@Override
 	public void saveImageClicked() {
 		askForWriteExternalStoragePermission(PERMISSION_EXTERNAL_STORAGE_SAVE);
-	}
-
-	@Override
-	public void enterFullscreenClicked() {
-		model.setFullscreen(true);
-		enterFullscreen();
-	}
-
-	@Override
-	public void exitFullscreenClicked() {
-		model.setFullscreen(false);
-		exitFullscreen();
 	}
 
 	@Override
@@ -293,8 +278,6 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 			drawerLayoutViewHolder.closeDrawer(Gravity.START, true);
 		} else if (drawerLayoutViewHolder.isDrawerOpen(GravityCompat.END)) {
 			drawerLayoutViewHolder.closeDrawer(Gravity.END, true);
-		} else if (model.isFullscreen()) {
-			exitFullscreenClicked();
 		} else if (toolController.toolOptionsViewVisible()) {
 			toolController.hideToolOptionsView();
 		} else if (!toolController.isDefaultTool()) {
@@ -381,40 +364,14 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 		refreshActionBarButtons();
 		bottomNavigationViewHolder.setCurrentTool(toolController.getToolType());
 
-		if (model.isFullscreen()) {
-			enterFullscreen();
-		} else {
-			exitFullscreen();
-		}
-
 		if (commandManager.isBusy()) {
 			navigator.showIndeterminateProgressDialog();
 		}
 	}
 
-	private void exitFullscreen() {
-		view.exitFullscreen();
-		actionBar.show();
-		bottomNavigationViewHolder.show();
-		toolController.enableToolOptionsView();
-		perspective.exitFullscreen();
-	}
-
-	private void enterFullscreen() {
-		view.hideKeyboard();
-		view.enterFullscreen();
-		actionBar.hide();
-		bottomBarViewHolder.hide();
-		bottomNavigationViewHolder.hide();
-		toolController.disableToolOptionsView();
-		perspective.enterFullscreen();
-	}
-
 	@Override
-	public void restoreState(boolean isFullscreen, boolean isSaved,
-							boolean wasInitialAnimationPlayed, @Nullable Uri savedPictureUri,
-							@Nullable Uri cameraImageUri) {
-		model.setFullscreen(isFullscreen);
+	public void restoreState(boolean isSaved, boolean wasInitialAnimationPlayed,
+							@Nullable Uri savedPictureUri, @Nullable Uri cameraImageUri) {
 		model.setSaved(isSaved);
 		model.setInitialAnimationPlayed(wasInitialAnimationPlayed);
 		model.setSavedPictureUri(savedPictureUri);
@@ -473,13 +430,11 @@ public class MainActivityPresenter implements Presenter, SaveImageCallback, Load
 			return;
 		}
 
-		switch (requestCode) {
-			case CREATE_FILE_DEFAULT:
-				model.setSavedPictureUri(view.getUriFromFile(file));
-				break;
-			default:
-				throw new IllegalArgumentException();
+		if (requestCode != CREATE_FILE_DEFAULT) {
+			throw new IllegalArgumentException();
 		}
+
+		model.setSavedPictureUri(view.getUriFromFile(file));
 	}
 
 	@Override

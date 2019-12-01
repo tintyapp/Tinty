@@ -101,16 +101,12 @@ public interface MainActivityContracts {
 		boolean isKeyboardShown();
 
 		void refreshDrawingSurface();
-
-		void enterFullscreen();
-
-		void exitFullscreen();
 	}
 
 	interface Presenter {
 		void initializeFromCleanState();
 
-		void restoreState(boolean isFullscreen, boolean isSaved,
+		void restoreState(boolean isSaved,
 						boolean wasInitialAnimationPlayed, @Nullable Uri savedPictureUri, @Nullable Uri cameraImageUri);
 
 		void finishInitialize();
@@ -124,10 +120,6 @@ public interface MainActivityContracts {
 		void saveCopyClicked();
 
 		void saveImageClicked();
-
-		void enterFullscreenClicked();
-
-		void exitFullscreenClicked();
 
 		void showAboutClicked();
 
@@ -184,10 +176,6 @@ public interface MainActivityContracts {
 		boolean isSaved();
 
 		void setSaved(boolean saved);
-
-		boolean isFullscreen();
-
-		void setFullscreen(boolean fullscreen);
 
 		boolean wasInitialAnimationPlayed();
 

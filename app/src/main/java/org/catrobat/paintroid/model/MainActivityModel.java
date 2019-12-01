@@ -24,7 +24,6 @@ import android.net.Uri;
 import org.catrobat.paintroid.contract.MainActivityContracts;
 
 public class MainActivityModel implements MainActivityContracts.Model {
-	private boolean isFullscreen;
 	private boolean isSaved;
 	private boolean wasInitialAnimationPlayed;
 	private Uri savedPictureUri;
@@ -58,16 +57,6 @@ public class MainActivityModel implements MainActivityContracts.Model {
 	@Override
 	public void setSaved(boolean saved) {
 		isSaved = saved;
-	}
-
-	@Override
-	public boolean isFullscreen() {
-		return isFullscreen;
-	}
-
-	@Override
-	public void setFullscreen(boolean fullscreen) {
-		isFullscreen = fullscreen;
 	}
 
 	@Override

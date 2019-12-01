@@ -11,24 +11,20 @@
         android:title="@string/button_redo"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/pocketpaint_nav_save_image"
-        android:title="@string/menu_save_image"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/pocketpaint_nav_save_duplicate"
-        android:title="@string/menu_save_copy"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/pocketpaint_nav_open_image"
-        android:title="@string/menu_load_image"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/pocketpaint_nav_new_image"
         android:title="@string/menu_new_image"
         app:showAsAction="never" />
     <item
-        android:id="@+id/pocketpaint_nav_fullscreen_mode"
-        android:title="@string/menu_hide_menu"
+        android:id="@+id/pocketpaint_nav_load_image"
+        android:title="@string/menu_load_image"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/pocketpaint_nav_save_image"
+        android:title="@string/menu_save_image"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/pocketpaint_nav_save_image_as"
+        android:title="@string/menu_save_copy"
         app:showAsAction="never" />
     <item
         android:id="@+id/pocketpaint_nav_about"

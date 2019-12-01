@@ -220,29 +220,6 @@ public class MainActivityPresenterTest {
 	}
 
 	@Test
-	public void testEnterFullscreenClicked() {
-		presenter.enterFullscreenClicked();
-
-		verify(model).setFullscreen(true);
-		verify(actionBar).hide();
-		verify(view).hideKeyboard();
-		verify(view).enterFullscreen();
-		verify(toolController).disableToolOptionsView();
-		verify(perspective).enterFullscreen();
-	}
-
-	@Test
-	public void testExitFullscreenClicked() {
-		presenter.exitFullscreenClicked();
-
-		verify(model).setFullscreen(false);
-		verify(actionBar).show();
-		verify(view).exitFullscreen();
-		verify(toolController).enableToolOptionsView();
-		verify(perspective).exitFullscreen();
-	}
-
-	@Test
 	public void testShowAboutClickedThenShowAboutDialog() {
 		presenter.showAboutClicked();
 
@@ -394,15 +371,6 @@ public class MainActivityPresenterTest {
 	}
 
 	@Test
-	public void testOnBackPressedWhenIsFullscreenThenExitFullscreen() {
-		when(model.isFullscreen()).thenReturn(true);
-
-		presenter.onBackPressed();
-
-		verify(model).setFullscreen(false);
-	}
-
-	@Test
 	public void testOnBackPressedWhenToolOptionsShownThenHideToolOptions() {
 		when(toolController.toolOptionsViewVisible()).thenReturn(true);
 
@@ -536,7 +504,7 @@ public class MainActivityPresenterTest {
 
 	@Test
 	public void testRestoreStateThenRestoreFragmentListeners() {
-		presenter.restoreState(false, false, false, null, null);
+		presenter.restoreState(false, false, null, null);
 
 		verify(navigator).restoreFragmentListeners();
 	}
@@ -546,9 +514,8 @@ public class MainActivityPresenterTest {
 		Uri savedPictureUri = mock(Uri.class);
 		Uri cameraImageUri = mock(Uri.class);
 
-		presenter.restoreState(false, false, false, savedPictureUri, cameraImageUri);
+		presenter.restoreState(false, false, savedPictureUri, cameraImageUri);
 
-		verify(model).setFullscreen(false);
 		verify(model).setSaved(false);
 		verify(model).setInitialAnimationPlayed(false);
 		verify(model).setSavedPictureUri(savedPictureUri);
@@ -560,9 +527,8 @@ public class MainActivityPresenterTest {
 		Uri savedPictureUri = mock(Uri.class);
 		Uri cameraImageUri = mock(Uri.class);
 
-		presenter.restoreState(true, true, true, savedPictureUri, cameraImageUri);
+		presenter.restoreState(true, true, savedPictureUri, cameraImageUri);
 
-		verify(model).setFullscreen(true);
 		verify(model).setSaved(true);
 		verify(model).setInitialAnimationPlayed(true);
 		verify(model).setSavedPictureUri(savedPictureUri);
@@ -571,7 +537,7 @@ public class MainActivityPresenterTest {
 
 	@Test
 	public void testRestoreStateThenResetTool() {
-		presenter.restoreState(false, false, false, null, null);
+		presenter.restoreState(false, false, null, null);
 
 		verify(toolController).resetToolInternalStateOnImageLoaded();
 	}
@@ -616,24 +582,7 @@ public class MainActivityPresenterTest {
 	}
 
 	@Test
-	public void testFinishInitializeWhenNotFullscreenThenRestoreState() {
-		presenter.finishInitialize();
-
-		verify(view).exitFullscreen();
-	}
-
-	@Test
-	public void testFinishInitializeWhenFullscreenThenRestoreState() {
-		when(model.isFullscreen()).thenReturn(true);
-
-		presenter.finishInitialize();
-
-		verify(view).enterFullscreen();
-	}
-
-	@Test
 	public void testFinishInitializeThenRestoreColorButtonColor() {
-		when(model.isFullscreen()).thenReturn(true);
 		when(toolController.getToolColor()).thenReturn(Color.RED);
 
 		presenter.finishInitialize();
@@ -1091,7 +1040,6 @@ public class MainActivityPresenterTest {
 		verify(model, never()).setCameraImageUri(any(Uri.class));
 		verify(model, never()).setSaved(anyBoolean());
 		verify(model, never()).setInitialAnimationPlayed(anyBoolean());
-		verify(model, never()).setFullscreen(anyBoolean());
 	}
 
 	@Test
