@@ -35,7 +35,6 @@ import android.widget.Toast;
 
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.R;
-import org.catrobat.paintroid.colorpicker.ColorPickerDialog;
 import org.catrobat.paintroid.common.Constants;
 import org.catrobat.paintroid.common.MainActivityConstants.ActivityRequestCode;
 import org.catrobat.paintroid.contract.MainActivityContracts;
@@ -47,6 +46,7 @@ import org.catrobat.paintroid.dialog.SaveBeforeFinishDialog;
 import org.catrobat.paintroid.dialog.SaveBeforeFinishDialog.SaveBeforeFinishDialogType;
 import org.catrobat.paintroid.dialog.SaveBeforeLoadImageDialog;
 import org.catrobat.paintroid.dialog.SaveBeforeNewImageDialog;
+import org.catrobat.paintroid.fragment.ColorPicker;
 import org.catrobat.paintroid.tools.ToolReference;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
@@ -64,7 +64,7 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 	@Override
 	public void showColorPickerDialog() {
 		if (findFragmentByTag(Constants.COLOR_PICKER_DIALOG_TAG) == null) {
-			ColorPickerDialog dialog = ColorPickerDialog.newInstance(toolReference.get().getDrawPaint().getColor(), true);
+			ColorPicker dialog = ColorPicker.newInstance(toolReference.get().getDrawPaint().getColor());
 			setupColorPickerDialogListeners(dialog);
 			showFragmentSafely(dialog, Constants.COLOR_PICKER_DIALOG_TAG);
 		}
@@ -92,8 +92,8 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 		return mainActivity.getSupportFragmentManager().findFragmentByTag(tag);
 	}
 
-	private void setupColorPickerDialogListeners(ColorPickerDialog dialog) {
-		dialog.addOnColorPickedListener(new ColorPickerDialog.OnColorPickedListener() {
+	private void setupColorPickerDialogListeners(ColorPicker colorPicker) {
+		colorPicker.addOnColorPickedListener(new ColorPicker.OnColorPickedListener() {
 			@Override
 			public void colorChanged(int color) {
 				toolReference.get().changePaintColor(color);
@@ -226,7 +226,7 @@ public class MainActivityNavigator implements MainActivityContracts.Navigator {
 	public void restoreFragmentListeners() {
 		Fragment fragment = findFragmentByTag(Constants.COLOR_PICKER_DIALOG_TAG);
 		if (fragment != null) {
-			setupColorPickerDialogListeners((ColorPickerDialog) fragment);
+			setupColorPickerDialogListeners((ColorPicker) fragment);
 		}
 	}
 }

@@ -55,7 +55,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.catrobat.paintroid.test.espresso.util.UiInteractions.touchAt;
-import static org.catrobat.paintroid.test.espresso.util.wrappers.ColorPickerViewInteraction.onColorPickerView;
 import static org.catrobat.paintroid.test.espresso.util.wrappers.ConfirmQuitDialogInteraction.onConfirmQuitDialog;
 import static org.catrobat.paintroid.test.espresso.util.wrappers.DrawingSurfaceInteraction.onDrawingSurfaceView;
 import static org.catrobat.paintroid.test.espresso.util.wrappers.ToolBarViewInteraction.onToolBarView;
@@ -193,16 +192,6 @@ public class ToolOnBackPressedIntegrationTest {
 		pressBack();
 		onView(withId(R.id.pocketpaint_drawer_layout))
 				.check(matches(isClosed()));
-	}
-
-	@Test
-	public void testCloseColorPickerDialogOnBackPressed() {
-		onColorPickerView()
-				.performOpenColorPicker()
-				.check(matches(isDisplayed()));
-		pressBack();
-		onColorPickerView()
-				.check(doesNotExist());
 	}
 
 	@Test

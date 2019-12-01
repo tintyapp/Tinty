@@ -52,7 +52,7 @@ android {
 dependencies {
     implementation "com.android.support:appcompat-v7:$androidSupportLibraryVersion"
     implementation "com.android.support:design:$androidSupportLibraryVersion"
-    implementation project(':colorpicker')
+    implementation 'com.github.skydoves:colorpickerview:2.0.2'
     debugImplementation 'com.android.support:multidex:1.0.3'
 
     testImplementation 'junit:junit:4.12'

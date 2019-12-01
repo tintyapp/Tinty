@@ -967,7 +967,7 @@ public class TransformToolIntegrationTest {
 	@Test
 	public void testRotateLeft() {
 		onToolProperties()
-				.setColorResource(R.color.pocketpaint_color_picker_green1);
+				.setColorResource(R.color.pocketpaint_colorAccent);
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_LEFT));
 
@@ -980,7 +980,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_BOTTOM_LEFT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -991,7 +991,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_BOTTOM_RIGHT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1002,7 +1002,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_RIGHT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1013,13 +1013,13 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_LEFT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 	}
 
 	@Test
 	public void testRotateRight() {
 		onToolProperties()
-				.setColorResource(R.color.pocketpaint_color_picker_green1);
+				.setColorResource(R.color.pocketpaint_colorAccent);
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_LEFT));
 
@@ -1032,7 +1032,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_RIGHT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1043,7 +1043,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_BOTTOM_RIGHT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1054,7 +1054,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_BOTTOM_LEFT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1065,7 +1065,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_LEFT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 	}
 
 	@Test
@@ -1073,7 +1073,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_LEFT));
 		onToolProperties()
-				.setColorResource(R.color.pocketpaint_color_picker_green1);
+				.setColorResource(R.color.pocketpaint_colorAccent);
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_BOTTOM_RIGHT));
 
@@ -1090,7 +1090,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_BOTTOM_LEFT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1105,7 +1105,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_LEFT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1120,7 +1120,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_TOP_RIGHT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 
 		onToolBarView()
 				.performSelectTool(ToolType.TRANSFORM);
@@ -1135,7 +1135,7 @@ public class TransformToolIntegrationTest {
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.HALFWAY_BOTTOM_RIGHT));
 		onToolProperties()
-				.checkMatchesColorResource(R.color.pocketpaint_color_picker_green1);
+				.checkMatchesColorResource(R.color.pocketpaint_colorAccent);
 	}
 
 	@Test

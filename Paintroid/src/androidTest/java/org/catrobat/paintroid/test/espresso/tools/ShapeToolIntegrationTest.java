@@ -110,13 +110,13 @@ public class ShapeToolIntegrationTest {
 				.performCloseToolOptionsView();
 
 		onToolProperties()
-				.setColorResource(R.color.pocketpaint_color_picker_brown1);
+				.setColorResource(R.color.pocketpaint_colorAccent);
 
 		onDrawingSurfaceView()
 				.perform(touchAt(DrawingSurfaceLocationProvider.TOOL_POSITION));
 
 		onDrawingSurfaceView()
-				.checkPixelColorResource(R.color.pocketpaint_color_picker_brown1, BitmapLocationProvider.MIDDLE);
+				.checkPixelColorResource(R.color.pocketpaint_colorAccent, BitmapLocationProvider.MIDDLE);
 	}
 
 	@Test

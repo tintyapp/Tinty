@@ -19,7 +19,6 @@
 
 package org.catrobat.paintroid.test.espresso.util.wrappers;
 
-import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.support.annotation.ColorInt;
@@ -27,7 +26,6 @@ import android.support.annotation.ColorRes;
 import android.support.test.InstrumentationRegistry;
 import android.support.v4.content.ContextCompat;
 
-import org.catrobat.paintroid.R;
 import org.catrobat.paintroid.tools.Tool;
 
 import static org.catrobat.paintroid.test.espresso.util.EspressoUtils.getMainActivity;
@@ -75,11 +73,5 @@ public final class ToolPropertiesInteraction extends CustomViewInteraction {
 	public ToolPropertiesInteraction setColorResource(@ColorRes int colorResource) {
 		int color = ContextCompat.getColor(InstrumentationRegistry.getTargetContext(), colorResource);
 		return setColor(color);
-	}
-
-	public ToolPropertiesInteraction setColorPreset(int colorPresetPosition) {
-		Context targetContext = InstrumentationRegistry.getTargetContext();
-		int[] presetColors = targetContext.getResources().getIntArray(R.array.pocketpaint_color_picker_preset_colors);
-		return setColor(presetColors[colorPresetPosition]);
 	}
 }
