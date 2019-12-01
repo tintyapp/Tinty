@@ -40,7 +40,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import org.catrobat.paintroid.command.Command;
@@ -90,7 +89,6 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity implements MainActivityContracts.MainView,
 		CommandManager.CommandListener {
 	public static final String TAG = MainActivity.class.getSimpleName();
-	private static final String IS_FULLSCREEN_KEY = "isFullscreen";
 	private static final String IS_SAVED_KEY = "isSaved";
 	private static final String WAS_INITIAL_ANIMATION_PLAYED = "wasInitialAnimationPlayed";
 	private static final String SAVED_PICTURE_URI_KEY = "savedPictureUri";
@@ -117,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	private LayerPresenter layerPresenter;
 	private DrawingSurface drawingSurface;
 	private MainActivityContracts.ActionBarViewHolder actionBarViewHolder;
-	private MainActivityContracts.DrawerLayoutViewHolder drawerLayoutViewHolder;
 	private MainActivityContracts.Presenter presenter;
 	private KeyboardListener keyboardListener;
 	private PaintroidApplicationFragment appFragment;
@@ -168,13 +165,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 		if (savedInstanceState == null) {
 			presenter.initializeFromCleanState();
 		} else {
-			boolean isFullscreen = savedInstanceState.getBoolean(IS_FULLSCREEN_KEY, false);
 			boolean isSaved = savedInstanceState.getBoolean(IS_SAVED_KEY, false);
 			boolean wasInitialAnimationPlayed = savedInstanceState.getBoolean(WAS_INITIAL_ANIMATION_PLAYED, false);
 			Uri savedPictureUri = savedInstanceState.getParcelable(SAVED_PICTURE_URI_KEY);
 			Uri cameraImageUri = savedInstanceState.getParcelable(CAMERA_IMAGE_URI_KEY);
 
-			presenter.restoreState(isFullscreen, isSaved, wasInitialAnimationPlayed,
+			presenter.restoreState(isSaved, wasInitialAnimationPlayed,
 					savedPictureUri, cameraImageUri);
 		}
 
@@ -197,14 +193,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 			presenter.redoClicked();
 		} else if (i == R.id.pocketpaint_nav_save_image) {
 			presenter.saveImageClicked();
-		} else if (i == R.id.pocketpaint_nav_save_duplicate) {
+		} else if (i == R.id.pocketpaint_nav_save_image_as) {
 			presenter.saveCopyClicked();
-		} else if (i == R.id.pocketpaint_nav_open_image) {
+		} else if (i == R.id.pocketpaint_nav_load_image) {
 			presenter.loadImageClicked();
 		} else if (i == R.id.pocketpaint_nav_new_image) {
 			presenter.newImageClicked();
-		} else if (i == R.id.pocketpaint_nav_fullscreen_mode) {
-			presenter.enterFullscreenClicked();
 		} else if (i == R.id.pocketpaint_nav_about) {
 			presenter.showAboutClicked();
 		} else {
@@ -258,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 		View bottomNavigationView = findViewById(R.id.pocketpaint_main_bottom_navigation);
 
 		toolOptionsViewController = new DefaultToolOptionsViewController(this);
-		drawerLayoutViewHolder = new DrawerLayoutViewHolder(drawerLayout);
+		MainActivityContracts.DrawerLayoutViewHolder drawerLayoutViewHolder = new DrawerLayoutViewHolder(drawerLayout);
 		actionBarViewHolder = new ActionBarViewHolder(this, topBarLayout);
 		BottomBarViewHolder bottomBarViewHolder = new BottomBarViewHolder(bottomBarLayout);
 		BottomNavigationViewHolder bottomNavigationViewHolder = new BottomNavigationViewHolder(bottomNavigationView, getApplicationContext());
@@ -282,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 				new DefaultToolFactory(), commandManager, workspace, toolPaint, contextCallback);
 		presenter = new MainActivityPresenter(this, model, workspace,
 				navigator, interactor, actionBarViewHolder, bottomBarViewHolder, drawerLayoutViewHolder,
-				bottomNavigationViewHolder, new DefaultCommandFactory(), commandManager, perspective, toolController);
+				bottomNavigationViewHolder, new DefaultCommandFactory(), commandManager, toolController);
 		toolController.setOnColorPickedListener(new PresenterColorPickedListener(presenter));
 
 		keyboardListener = new KeyboardListener(drawerLayout);
@@ -405,7 +399,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	protected void onSaveInstanceState(@NonNull Bundle outState) {
 		super.onSaveInstanceState(outState);
 
-		outState.putBoolean(IS_FULLSCREEN_KEY, model.isFullscreen());
 		outState.putBoolean(IS_SAVED_KEY, model.isSaved());
 		outState.putBoolean(WAS_INITIAL_ANIMATION_PLAYED, model.wasInitialAnimationPlayed());
 		outState.putParcelable(SAVED_PICTURE_URI_KEY, model.getSavedPictureUri());
@@ -460,20 +453,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 	@Override
 	public void refreshDrawingSurface() {
 		drawingSurface.refreshDrawingSurface();
-	}
-
-	@Override
-	public void enterFullscreen() {
-		drawingSurface.disableAutoScroll();
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-	}
-
-	@Override
-	public void exitFullscreen() {
-		drawingSurface.enableAutoScroll();
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	}
 
 	@Override

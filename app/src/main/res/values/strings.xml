@@ -50,7 +50,7 @@
     <string name="menu_new_image">New</string>
     <string name="menu_load_image">Load</string>
     <string name="menu_save_image">Save</string>
-    <string name="menu_save_copy">Save copy</string>
+    <string name="menu_save_copy">Save as…</string>
     <string name="menu_hide_menu">Fullscreen</string>
     <string name="pocketpaint_menu_about">@string/pocketpaint_about_title</string>
     <string name="saved">Image saved</string>
