@@ -18,31 +18,20 @@
  */
 
 apply plugin: 'com.android.application'
-
-ext {
-    appId = 'org.catrobat.paintroid'
-    appName = '@string/pocketpaint_app_name'
-}
-
-// When -Pindependent was provided on the gradle command the APP name is changed.
-// This allows to have multiple Paintroid versions installed in parallel for testing purposes.
-// Furthermore these installations do not interfere with the actual Paintroid app.
-if (project.hasProperty('independent')) {
-    def today = new Date()
-    appId += '.independent_' + today.format('YYYYMMdd_HHmm')
-    appName = property('independent') ?: 'Paint ' + today.format('MMdd HH:mm')
-}
+apply from: '../gradle/code_quality_tasks.gradle'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
+
     defaultConfig {
-        applicationId appId
+        applicationId 'org.catrobat.paintroid'
+        manifestPlaceholders += [appName: '@string/pocketpaint_app_name']
         minSdkVersion rootProject.ext.androidMinSdkVersion
-        //noinspection OldTargetApi
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         versionCode rootProject.ext.androidVersionCode
         versionName rootProject.ext.androidVersionName
-        manifestPlaceholders += [appName: appName]
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -51,9 +40,32 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled = project.hasProperty('enableCoverage')
+            multiDexEnabled true
+        }
+    }
+
+    lintOptions {
+        // specific ignores should be defined via lint.xml file
+        ignore 'ClickableViewAccessibility', 'StaticFieldLeak', 'GradleDependency', 'OldTargetApi'
     }
 }
 
 dependencies {
-    implementation project(':Paintroid')
+    implementation "com.android.support:appcompat-v7:$androidSupportLibraryVersion"
+    implementation "com.android.support:design:$androidSupportLibraryVersion"
+    implementation 'com.github.skydoves:colorpickerview:2.0.2'
+    debugImplementation 'com.android.support:multidex:1.0.3'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'
+
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
 }

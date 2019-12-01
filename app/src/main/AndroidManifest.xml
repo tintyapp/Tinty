@@ -18,19 +18,24 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.catrobat.paintroid.tintyapp">
+    package="org.catrobat.paintroid">
 
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="${appName}"
+        android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
-        <activity android:name="org.catrobat.paintroid.MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/PocketPaintSplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
